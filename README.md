@@ -1,1 +1,1 @@
-#hyprland
+My Hyprland install script
