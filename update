@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+#this script finds the fastest mirrors
+
+#arch mirrors
+if [ -f /etc/pacman.d/mirrorlist ]; then
+    rate-mirrors --allow-root --protocol https arch | grep -v '^#' | sudo tee /etc/pacman.d/mirrorlist
+fi
+
+#chaotic-aur
+if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
+    rate-mirrors --allow-root --protocol https chaotic-aur | grep -v '^#' | sudo tee /etc/pacman.d/chaotic-mirrorlist
+fi
+
