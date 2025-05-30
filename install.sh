@@ -4,9 +4,12 @@ rfkill unblock wlan
 rfkill unblock bluetooth
 
 sudo pacman -S --needed --noconfirm rate-mirrors
+sudo chmod +x ./update
 sudo cp ./update /usr/bin
 update
 xargs -a ./my_packages sudo pacman -Syu --needed --noconfirm
+# aur packages
+xargs -a ./aur_packages yay -Syu --needed --noconfirm
 
 #cpu stuff
 vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
