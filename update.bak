@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-# This script finds the fastest mirrors
+#this script finds the fastest mirrors
 
 VERSION="v1.0"
 
@@ -24,25 +24,21 @@ case "$1" in
     ;;
 esac
 
-# Run mirror update in background
-(
-  # Arch mirrors
-  if [ -f /etc/pacman.d/mirrorlist ]; then
+(#arch mirrors
+if [ -f /etc/pacman.d/mirrorlist ]; then
     rate-mirrors --allow-root --disable-comments --protocol https arch | sudo tee /etc/pacman.d/mirrorlist > /dev/null
-  fi
+fi
 
-  # Chaotic-AUR
-  if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
+#chaotic-aur
+if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
     rate-mirrors --allow-root --disable-comments --protocol https chaotic-aur | sudo tee /etc/pacman.d/chaotic-mirrorlist > /dev/null
-  fi
-) &
-
+    fi)
 CMD_PID=$!
 
 # Show loading animation while command is running
 while kill -0 $CMD_PID 2>/dev/null; do
   for i in "" "." ".." "..."; do
-    echo -ne "Finding the fastest mirrors using rate-mirrors$i   \r"
+    echo -ne "loading$i   \r"
     sleep 0.5
   done
 done

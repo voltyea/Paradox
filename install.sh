@@ -3,7 +3,21 @@
 rfkill unblock wlan
 rfkill unblock bluetooth
 
- xargs -a ./my_packages sudo pacman -Syu --needed
+sudo pacman -S --needed --noconfirm rate-mirrors
+sudo cp ./update /usr/bin
+update
+xargs -a ./my_packages sudo pacman -Syu --needed --noconfirm
+
+#cpu stuff
+vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
+case "$vendor" in
+    GenuineIntel)
+        sudo pacman -S --needed --noconfirm intel-ucode vulkan-intel lib32-vulkan-intel
+        ;;
+    AuthenticAMD)
+        sudo pacman -S --needed --noconfirm amd-ucode vulkan-radeon lib32-vulkan-radeon
+        ;;
+esac
 
 # adding chaotic-aur
 
