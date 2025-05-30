@@ -1,12 +1,7 @@
 #!/usr/bin/bash
 
-if rfkill list wlan | grep -q "Soft blocked: yes"; then
 rfkill unblock wlan
-fi
-
-if rfkill list bluetooth | grep -q "Soft blocked: yes"; then
 rfkill unblock bluetooth
-fi
 
  xargs -a ./my_packages sudo pacman -Syu --needed
 
