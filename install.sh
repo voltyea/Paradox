@@ -65,3 +65,9 @@ fi
 
 #adding insults to sudo
 echo "Defaults insults" | sudo tee /etc/sudoers.d/insults
+
+#coping dotfiles
+
+
+#starting services
+sudo systemctl enable sddm.service

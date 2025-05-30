@@ -2,6 +2,7 @@ base-devel
 base
 git
 grub
+clang
 curl
 wget
 mesa
@@ -35,6 +36,10 @@ starship
 flatpak
 resources
 waybar
+fzf
+ripgrep
+fd
+tmux
 
 
 
