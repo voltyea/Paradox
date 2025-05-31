@@ -55,6 +55,24 @@ if grep -Fxq "$search_line" "$file"; then
 
 fi
 
+#Copying dotfiles
+version_gt() {
+  [ "$(printf '%s\n%s\n' "$1" "$2" | sort -V | head -n1)" != "$1" ]
+}
+github_version=$(curl -s https://raw.githubusercontent.com/voltyea/dotfiles/main/VERSION.txt)
+local_version=""
+if [[ -f "$HOME/.config/VERSION.txt" ]]; then
+  local_version=$(cat "$HOME/.config/VERSION.txt")
+fi
+if version_gt "$github_version" "$local_version"; then
+  git clone https://github.com/voltyea/dotfiles.git /tmp/dotfiles
+  sudo cp -r /tmp/dotfiles/* ~/.config
+fi
+
+#starting services
+sudo systemctl enable sddm.service
+sudo systemctl enable NetworkManager.service
+
 #regenerating mkinitcpio and the grub config
 sudo mkinitcpio -P
 sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -66,4 +84,21 @@ CURRENT_SHELL=$(basename "$SHELL")
 
 if [ "$CURRENT_SHELL" != "fish" ]; then
   chsh -s "$FISH_PATH" $USER
+fi
+
+#rebooting the system
+# Prompt the user
+read -p "Do you want to reboot the system now? (yes/no): " answer
+
+# Convert answer to lowercase
+answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+
+# Check the user's input
+if [[ "$answer" == "yes" || "$answer" == "y" ]]; then
+  echo "Rebooting now..."
+  sudo reboot
+elif [[ "$answer" == "no" || "$answer" == "n" ]]; then
+  echo "Reboot canceled."
+else
+  echo "Invalid input. Please enter yes or no."
 fi

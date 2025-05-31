@@ -2,38 +2,38 @@
 
 # This script finds the fastest mirrors
 
-VERSION="v1.0"
+VERSION="v1.0.0"
 
 case "$1" in
-  --version)
-    echo "update script version $VERSION"
-    exit 0
-    ;;
-  --help|-h)
-    echo "This script updates your mirrors to the fastest mirrors using rate-mirrors"
-    echo "Just type 'update' to run the script"
-    echo "--version   Show version"
-    echo "-h, --help  Show help"
-    exit 0
-    ;;
-  -*)
-    echo "Error: Unknown option '$1'" >&2
-    echo "Use --help to see available options."
-    echo "Just type 'update' to run the script"
-    exit 1
-    ;;
+--version)
+  echo "update script version $VERSION"
+  exit 0
+  ;;
+--help | -h)
+  echo "This script updates your mirrors to the fastest mirrors using rate-mirrors"
+  echo "Just type 'update' to run the script"
+  echo "--version   Show version"
+  echo "-h, --help  Show help"
+  exit 0
+  ;;
+-*)
+  echo "Error: Unknown option '$1'" >&2
+  echo "Use --help to see available options."
+  echo "Just type 'update' to run the script"
+  exit 1
+  ;;
 esac
 
 # Run mirror update in background
 (
   # Arch mirrors
   if [ -f /etc/pacman.d/mirrorlist ]; then
-    rate-mirrors --allow-root --disable-comments --protocol https arch | sudo tee /etc/pacman.d/mirrorlist > /dev/null
+    rate-mirrors --allow-root --disable-comments --protocol https arch | sudo tee /etc/pacman.d/mirrorlist >/dev/null
   fi
 
   # Chaotic-AUR
   if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
-    rate-mirrors --allow-root --disable-comments --protocol https chaotic-aur | sudo tee /etc/pacman.d/chaotic-mirrorlist > /dev/null
+    rate-mirrors --allow-root --disable-comments --protocol https chaotic-aur | sudo tee /etc/pacman.d/chaotic-mirrorlist >/dev/null
   fi
 ) &
 
@@ -47,3 +47,4 @@ while kill -0 $CMD_PID 2>/dev/null; do
   done
 done
 
+echo "Mirrors updated successfully!      "
