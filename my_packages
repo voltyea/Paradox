@@ -21,6 +21,7 @@ dunst
 hyprland
 ghostty
 network-manager-applet
+networkmanager
 polkit-kde-agent
 sddm
 smartmontools
@@ -40,6 +41,7 @@ fzf
 ripgrep
 fd
 tmux
+yank
 
 
 
