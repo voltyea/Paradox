@@ -66,7 +66,7 @@ if [[ -f "$HOME/.config/VERSION.txt" ]]; then
 fi
 if version_gt "$github_version" "$local_version"; then
   git clone https://github.com/voltyea/dotfiles.git /tmp/dotfiles/
-  cp -r /tmp/dotfiles/* ~/.config/
+  cp -r /tmp/dotfiles/. ~/.config/
 fi
 
 #installing sddm theme
