@@ -19,11 +19,13 @@ neovim
 dolphin
 dunst
 hyprland
-ghostty
+hyprpaper
+kitty
 network-manager-applet
 networkmanager
 polkit-kde-agent
 sddm
+fuse
 smartmontools
 wireless_tools
 rofi
@@ -42,6 +44,23 @@ ripgrep
 fd
 tmux
 yank
+tree
+ffmpeg
+imagemagick
+libpng
+libwebp
+libjpeg
+ttf-firacode-nerd
+pango
+libultrahdr
+perl
+noto-fonts-extra
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+qt5-graphicaleffects
+qt5-svg
+qt5-quickcontrols2
 
 
 

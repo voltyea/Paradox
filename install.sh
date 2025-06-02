@@ -65,8 +65,39 @@ if [[ -f "$HOME/.config/VERSION.txt" ]]; then
   local_version=$(cat "$HOME/.config/VERSION.txt")
 fi
 if version_gt "$github_version" "$local_version"; then
-  git clone https://github.com/voltyea/dotfiles.git /tmp/dotfiles
-  sudo cp -r /tmp/dotfiles/* ~/.config
+  git clone https://github.com/voltyea/dotfiles.git /tmp/dotfiles/
+  sudo cp -r /tmp/dotfiles/* ~/.config/
+fi
+
+#installing sddm theme
+sudo chmod +x ./sddm.sh
+./sddm.sh
+
+#install catppuccin cursor theme
+sudo chmod +x ./cursor.sh
+./cursor.sh
+
+#installing tpm for tmux
+git clone https://github.com/tmux-plugins/tpm/ ~/.config/tmux/plugins/tpm/
+
+#Nyarch goodies
+
+#installing nyarch assistant >⩊<
+if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
+  wget -P /tmp/ https://github.com/nyarchlinux/nyarchassistant/releases/latest/download/nyarchassistant.flatpak
+  flatpak install /tmp/nyarchassistant.flatpak
+fi
+
+#catgirl downloader
+if ! flatpak list | grep -q "moe.nyarchlinux.catgirldownloader"; then
+  wget -P /tmp/ https://github.com/nyarchlinux/catgirldownloader/releases/latest/download/catgirldownloader.flatpak
+  flatpak install /tmp/catgirldownloader.flatpak
+fi
+
+#waifu downloader
+if ! flatpak list | grep -q "moe.nyarchlinux.waifudownloader"; then
+  wget -P /tmp/ https://github.com/nyarchlinux/waifudownloader/releases/latest/download/waifudownloader.flatpak
+  flatpak install /tmp/waifudownloader.flatpak
 fi
 
 #starting services
