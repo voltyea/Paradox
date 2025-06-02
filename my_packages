@@ -26,6 +26,9 @@ networkmanager
 polkit-kde-agent
 sddm
 fuse
+yazi
+zoxide
+chafa
 smartmontools
 wireless_tools
 rofi
@@ -61,6 +64,10 @@ noto-fonts-emoji
 qt5-graphicaleffects
 qt5-svg
 qt5-quickcontrols2
+gvfs
+gvfs-mtp
+mtpfs
+
 
 
 
