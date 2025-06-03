@@ -70,7 +70,7 @@ if version_gt "$github_version" "$local_version"; then
 fi
 
 #copying wallpapers
-git clone https://github.com/voltyea/my_wallpapers.git ~/wallpapers
+git clone https://github.com/voltyea/my_wallpapers.git ~/wallpapers/
 
 #installing sddm theme
 sudo chmod +x ./sddm.sh
