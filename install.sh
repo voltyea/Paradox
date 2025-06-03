@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 rfkill unblock wlan
 rfkill unblock bluetooth
@@ -14,8 +14,8 @@ fi
 # adding chaotic-aur
 
 if [ ! -f /etc/pacman.d/chaotic-mirrorlist ]; then
-  sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com && \
-echo "y" | sudo pacman-key --lsign-key 3056513887B78AEB
+  sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com &&
+    echo "y" | sudo pacman-key --lsign-key 3056513887B78AEB
 
   sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
   sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
@@ -92,7 +92,9 @@ fi
 if ! flatpak list | grep -q "moe.nyarchlinux.waifudownloader"; then
   wget -P /tmp/ https://github.com/nyarchlinux/waifudownloader/releases/latest/download/waifudownloader.flatpak
 fi
-flatpak install --user -y /tmp/nyarchassistant.flatpak /tmp/catgirldownloader.flatpak /tmp/waifudownloader.flatpak
+flatpak install --user -y /tmp/nyarchassistant.flatpak
+flatpak install --user -y /tmp/catgirldownloader.flatpak
+flatpak install --user -y /tmp/waifudownloader.flatpak
 
 #starting services
 sudo systemctl enable sddm.service
@@ -112,18 +114,17 @@ if [ "$CURRENT_SHELL" != "fish" ]; then
 fi
 
 #rebooting the system
-# Prompt the user
-read -p "Do you want to reboot the system now? (Y/n): " answer
-
-# Convert answer to lowercase
-answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
-
-# Check the user's input
-if [[ -z "$answer" == "yes" || "$answer" == "y" ]]; then
-  echo "Rebooting now..."
-  sudo reboot
-elif [[ "$answer" == "no" || "$answer" == "n" ]]; then
-  echo "Reboot canceled."
-else
-  echo "Invalid input. Please enter yes or no."
-fi
+while true; do
+  read -p "Do you want to reboot the system now? (Y/n): " answer
+  answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
+  if [[ -z "$answer" || "$answer" == "yes" || "$answer" == "y" ]]; then
+    echo "Rebooting now..."
+    sudo reboot
+    break
+  elif [[ "$answer" == "no" || "$answer" == "n" ]]; then
+    echo "Reboot canceled."
+    break
+  else
+    echo "Invalid input. Please enter yes or no."
+  fi
+done
