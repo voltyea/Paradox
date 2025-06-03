@@ -69,6 +69,9 @@ if version_gt "$github_version" "$local_version"; then
   cp -r /tmp/dotfiles/. ~/.config/
 fi
 
+#copying wallpapers
+git clone https://github.com/voltyea/my_wallpapers.git ~/wallpapers
+
 #installing sddm theme
 sudo chmod +x ./sddm.sh
 ./sddm.sh
