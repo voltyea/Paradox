@@ -14,25 +14,24 @@ fi
 # adding chaotic-aur
 
 if [ ! -f /etc/pacman.d/chaotic-mirrorlist ]; then
-  sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-  sudo pacman-key --lsign-key 3056513887B78AEB
+  sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com && \
+echo "y" | sudo pacman-key --lsign-key 3056513887B78AEB
 
-  sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-  sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+  sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+  sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
   if ! grep -qF "[chaotic-aur]" /etc/pacman.conf; then
     echo -e "\n\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
-    sudo pacman -Syu
+    sudo pacman -Syu --noconfirm
   fi
 fi
 
-sudo pacman -S --needed --noconfirm rate-mirrors
+sudo pacman -Syu --needed --noconfirm rate-mirrors paru
 sudo chmod +x ./update
 sudo cp ./update /usr/bin
 update
-xargs -a ./pkg.lst sudo pacman -Syu --needed --noconfirm
-# aur packages
-xargs -a ./aur_pkg.lst yay -Syu --needed --noconfirm
+sudo pacman -Syu --noconfirm
+xargs -a ./pkg.lst paru -Syu --needed --noconfirm
 
 #cpu stuff
 vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
@@ -83,25 +82,17 @@ sudo chmod +x ./cursor.sh
 #installing tpm for tmux
 git clone https://github.com/tmux-plugins/tpm/ ~/.config/tmux/plugins/tpm/
 
-#Nyarch goodies
-
-#installing nyarch assistant >⩊<
+#Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
   wget -P /tmp/ https://github.com/nyarchlinux/nyarchassistant/releases/latest/download/nyarchassistant.flatpak
-  flatpak install /tmp/nyarchassistant.flatpak
 fi
-
-#catgirl downloader
 if ! flatpak list | grep -q "moe.nyarchlinux.catgirldownloader"; then
   wget -P /tmp/ https://github.com/nyarchlinux/catgirldownloader/releases/latest/download/catgirldownloader.flatpak
-  flatpak install /tmp/catgirldownloader.flatpak
 fi
-
-#waifu downloader
 if ! flatpak list | grep -q "moe.nyarchlinux.waifudownloader"; then
   wget -P /tmp/ https://github.com/nyarchlinux/waifudownloader/releases/latest/download/waifudownloader.flatpak
-  flatpak install /tmp/waifudownloader.flatpak
 fi
+flatpak install --user -y /tmp/nyarchassistant.flatpak /tmp/catgirldownloader.flatpak /tmp/waifudownloader.flatpak
 
 #starting services
 sudo systemctl enable sddm.service
@@ -122,13 +113,13 @@ fi
 
 #rebooting the system
 # Prompt the user
-read -p "Do you want to reboot the system now? (yes/no): " answer
+read -p "Do you want to reboot the system now? (Y/n): " answer
 
 # Convert answer to lowercase
 answer=$(echo "$answer" | tr '[:upper:]' '[:lower:]')
 
 # Check the user's input
-if [[ "$answer" == "yes" || "$answer" == "y" ]]; then
+if [[ -z "$answer" == "yes" || "$answer" == "y" ]]; then
   echo "Rebooting now..."
   sudo reboot
 elif [[ "$answer" == "no" || "$answer" == "n" ]]; then
