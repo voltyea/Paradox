@@ -95,6 +95,10 @@ sudo chmod +x ./cursor.sh
 sudo chmod +x ./key.sh
 ./key.sh
 
+#Applying gtk theme
+sudo chmod +x ./gtk.sh
+./gtk.sh
+
 #installing tpm for tmux
 git clone https://github.com/tmux-plugins/tpm/ ~/.config/tmux/plugins/tpm/
 
@@ -108,9 +112,9 @@ fi
 if ! flatpak list | grep -q "moe.nyarchlinux.waifudownloader"; then
   wget -P /tmp/ https://github.com/nyarchlinux/waifudownloader/releases/latest/download/waifudownloader.flatpak
 fi
-flatpak install --user -y /tmp/nyarchassistant.flatpak
-flatpak install --user -y /tmp/catgirldownloader.flatpak
-flatpak install --user -y /tmp/waifudownloader.flatpak
+flatpak install -y /tmp/nyarchassistant.flatpak
+flatpak install -y /tmp/catgirldownloader.flatpak
+flatpak install -y /tmp/waifudownloader.flatpak
 
 #starting services
 sudo systemctl enable sddm.service
