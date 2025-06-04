@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #copying the catppuccin-mocha lavendar cursor theme, you can change it if you like.
 sudo cp -r /usr/share/icons/catppuccin-mocha-lavender-cursors/ ~/.local/share/icons/

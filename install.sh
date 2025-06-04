@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 rfkill unblock wlan
 rfkill unblock bluetooth
@@ -8,8 +8,17 @@ echo "Defaults insults" | sudo tee /etc/sudoers.d/insults
 
 #Pacman stuff
 if ! grep -qF "ILoveCandy" /etc/pacman.conf; then
-  echo -e "\n\n[options]\nILoveCandy" | sudo tee -a /etc/pacman.conf
+  if grep -q "^\[options\]" /etc/pacman.conf; then
+    # Append ILoveCandy under existing [options]
+    sudo sed -i '/^\[options\]/a ILoveCandy' /etc/pacman.conf
+  else
+    # Add new [options] section with ILoveCandy
+    echo -e "\n[options]\nILoveCandy" | sudo tee -a /etc/pacman.conf
+  fi
 fi
+
+sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' /etc/pacman.conf
 
 # adding chaotic-aur
 
@@ -45,13 +54,8 @@ AuthenticAMD)
 esac
 
 #changing grub timeout
-search_line="GRUB_TIMEOUT=5"
-file="/etc/default/grub"
-
-if grep -Fxq "$search_line" "$file"; then
-
-  sudo sed -i 's/^GRUB_TIMEOUT=5$/GRUB_TIMEOUT=0/' /etc/default/grub
-
+if grep -q "^GRUB_TIMEOUT=" /etc/default/grub; then
+  sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
 fi
 
 #Copying dotfiles
@@ -68,6 +72,14 @@ if version_gt "$github_version" "$local_version"; then
   cp -r /tmp/dotfiles/. ~/.config/
 fi
 
+#changing systemd logind.conf so that it won't turn off wifi when laptop lid is closed
+# Set HandleLidSwitch=ignore in /etc/systemd/logind.conf to prevent suspend on lid close
+if grep -qE '^\s*HandleLidSwitch=' /etc/systemd/logind.conf; then
+  sudo sed -i 's/^\s*HandleLidSwitch=.*/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+else
+  echo 'HandleLidSwitch=ignore' | sudo tee -a /etc/systemd/logind.conf
+fi
+
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git ~/wallpapers/
 
@@ -78,6 +90,10 @@ sudo chmod +x ./sddm.sh
 #install catppuccin cursor theme
 sudo chmod +x ./cursor.sh
 ./cursor.sh
+
+#remapping keys
+sudo chmod +x ./key.sh
+./key.sh
 
 #installing tpm for tmux
 git clone https://github.com/tmux-plugins/tpm/ ~/.config/tmux/plugins/tpm/
