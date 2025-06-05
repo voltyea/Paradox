@@ -1,7 +1,7 @@
 #!/bin/sh
 
-mkdir -p ~/.local/share/themes/
-cp -r /usr/share/themes/. ~/.local/share/themes/
+mkdir -p $HOME/.local/share/themes/
+cp -r /usr/share/themes/. $HOME/.local/share/themes/
 
 sudo flatpak override --filesystem=$HOME/.local/share/themes
 

@@ -69,7 +69,7 @@ if [[ -f "$HOME/.config/VERSION.txt" ]]; then
 fi
 if version_gt "$github_version" "$local_version"; then
   git clone https://github.com/voltyea/dotfiles.git /tmp/dotfiles/
-  cp -r /tmp/dotfiles/. ~/.config/
+  cp -r /tmp/dotfiles/. $HOME/.config/
 fi
 
 #changing systemd logind.conf so that it won't turn off wifi when laptop lid is closed
@@ -81,7 +81,7 @@ else
 fi
 
 #copying wallpapers
-git clone https://github.com/voltyea/my_wallpapers.git ~/wallpapers/
+git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
 
 #installing sddm theme
 sudo chmod +x ./sddm.sh
@@ -100,7 +100,7 @@ sudo chmod +x ./gtk.sh
 ./gtk.sh
 
 #installing tpm for tmux
-git clone https://github.com/tmux-plugins/tpm/ ~/.config/tmux/plugins/tpm/
+git clone https://github.com/tmux-plugins/tpm/ $HOME/.config/tmux/plugins/tpm/
 
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
