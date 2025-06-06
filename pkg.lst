@@ -61,6 +61,7 @@ libwebp
 libjpeg
 ttf-firacode-nerd
 pango
+cairo
 libultrahdr
 perl
 noto-fonts-extra
@@ -83,3 +84,12 @@ jmtpfs
 keyd
 catppuccin-gtk-theme-mocha
 nwg-look
+libnotify
+unzip
+pamixer
+swayosd
+otf-font-awesome
+ttf-font-awesome
+pavucontrol
+nm-connection-editor
+power-profiles-daemon

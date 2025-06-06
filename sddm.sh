@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sudo mkdir -p /etc/sddm.conf.d/
 sudo cp dotfiles/sddm/sddm.conf /etc/sddm.conf.d/

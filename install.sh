@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 rfkill unblock wlan
 rfkill unblock bluetooth
@@ -20,8 +20,19 @@ fi
 sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists$/VerbosePkgLists/' /etc/pacman.conf
 
-# adding chaotic-aur
+#enabling multilib repository
+if grep -q "^#[multilib]" /etc/pacman.conf; then
+  sudo sed -i 's/^#[multilib]$/[multilib]/' /etc/pacman.conf
+fi
+if ! grep -q "^\[multilib\]" /etc/pacman.conf; then
+  sudo tee -a /etc/pacman.conf >/dev/null <<EOF
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+EOF
+fi
+sudo sed -i '/^\[multilib\]/,/^\[/{s/^#\(Include = \/etc\/pacman\.d\/mirrorlist\)/\1/}' /etc/pacman.conf
 
+# adding chaotic-aur
 if [ ! -f /etc/pacman.d/chaotic-mirrorlist ]; then
   sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com &&
     echo "y" | sudo pacman-key --lsign-key 3056513887B78AEB

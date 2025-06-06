@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p $HOME/.local/share/themes/
 cp -r /usr/share/themes/. $HOME/.local/share/themes/

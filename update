@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script finds the fastest mirrors
 
@@ -24,6 +24,8 @@ case "$1" in
   ;;
 esac
 
+sudo -v
+
 # Run mirror update in background
 (
   # Arch mirrors
@@ -36,15 +38,14 @@ esac
     rate-mirrors --allow-root --disable-comments --protocol https chaotic-aur | sudo tee /etc/pacman.d/chaotic-mirrorlist >/dev/null
   fi
 ) &
-
-CMD_PID=$!
+CMD_PID=$! # Capture background process PID
 
 # Show loading animation while command is running
 while kill -0 $CMD_PID 2>/dev/null; do
   for i in "" "." ".." "..."; do
-    echo -ne "Finding the fastest mirrors using rate-mirrors$i   \r"
+    printf "\r\033[2KFinding the fastest mirrors using rate-mirrors%s" "$i"
     sleep 0.5
   done
 done
 
-echo "Mirrors updated successfully!      "
+echo -e "\r\033[2KMirrors updated successfully!      "
