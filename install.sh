@@ -57,10 +57,10 @@ xargs -a ./pkg.lst paru -Syu --needed --noconfirm
 vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
 case "$vendor" in
 GenuineIntel)
-  sudo pacman -S --needed --noconfirm intel-ucode vulkan-intel lib32-vulkan-intel
+  sudo pacman -S --needed --noconfirm intel-ucode intel-media-driver libva-intel-driver vulkan-intel lib32-vulkan-intel
   ;;
 AuthenticAMD)
-  sudo pacman -S --needed --noconfirm amd-ucode vulkan-radeon lib32-vulkan-radeon
+  sudo pacman -S --needed --noconfirm amd-ucode libva-mesa-driver vulkan-radeon xf86-video-amdgpu xf86-video-ati lib32-vulkan-radeon
   ;;
 esac
 
@@ -130,6 +130,8 @@ flatpak install -y /tmp/waifudownloader.flatpak
 #starting services
 sudo systemctl enable sddm.service
 sudo systemctl enable NetworkManager.service
+sudo systemctl enable bluetooth.service
+systemctl --user enable pipewire pipewire-pulse wireplumber
 
 #regenerating mkinitcpio and the grub config
 sudo mkinitcpio -P
