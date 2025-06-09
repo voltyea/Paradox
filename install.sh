@@ -83,38 +83,35 @@ if version_gt "$github_version" "$local_version"; then
   mkdir -p $HOME/dotfiles/
   cp -r /tmp/dotfiles/. $HOME/dotfiles/
 
-  SOURCE_DIR="$HOME/dotfiles/"
-  TARGET_DIR="$HOME/"
+SOURCE_DIR="$HOME/dotfiles/"
+TARGET_DIR="$HOME/"
 
-  # Loop through each item in the source directory
-  for item in "$SOURCE_DIR"/*; do
-    # Get the basename of the item (file or directory name without path)
-    item_name=$(basename "$item")
-    target_item="$TARGET_DIR/$item_name"
+# Loop through each item in the source directory
+for item in "$SOURCE_DIR"/*; do
+  # Get the basename of the item (file or directory name without path)
+  item_name=$(basename "$item")
+  target_item="$TARGET_DIR/$item_name"
 
-    if [[ -e "$target_item" ]]; then
-      if [[ -L "$target_item" ]]; then
-
-      elif [[ "$item_name" == ".config" && -d "$target_item" ]]; then
-
-        for subitem in "$item"/*; do
-          subitem_name=$(basename "$subitem")
-          target_subitem="$target_item/$subitem_name"
-          if [[ -e "$target_subitem" ]]; then
-            if [[ -L "$target_subitem" ]]; then
-
-            else
-
-              rm -rf "$target_subitem"
-            fi
+  if [[ -e "$target_item" ]]; then
+    if [[ -L "$target_item" ]]; then
+      rm "$target_item"
+    elif [[ "$item_name" == ".config" && -d "$target_item" ]]; then
+      for subitem in "$item"/*; do
+        subitem_name=$(basename "$subitem")
+        target_subitem="$target_item/$subitem_name"
+        if [[ -e "$target_subitem" ]]; then
+          if [[ -L "$target_subitem" ]]; then
+            rm "$target_subitem"
+          else
+            rm -rf "$target_subitem"
           fi
-        done
-      else
-
-        rm -rf "$target_item"
-      fi
+        fi
+      done
+    else
+      rm -rf "$target_item"
     fi
-  done
+  fi
+done
 
   cd $HOME/dotfiles/
   stow .
