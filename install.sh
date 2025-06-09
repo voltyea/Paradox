@@ -69,56 +69,6 @@ if grep -q "^GRUB_TIMEOUT=" /etc/default/grub; then
   sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
 fi
 
-#Copying dotfiles
-version_gt() {
-  [ "$(printf '%s\n%s\n' "$1" "$2" | sort -V | head -n1)" != "$1" ]
-}
-github_version=$(curl -s https://raw.githubusercontent.com/voltyea/dotfiles/main/VERSION.txt)
-local_version=""
-if [[ -f "$HOME/dotfiles/VERSION.txt" ]]; then
-  local_version=$(cat "$HOME/dotfiles/VERSION.txt")
-fi
-if version_gt "$github_version" "$local_version"; then
-  git clone https://github.com/voltyea/dotfiles.git /tmp/dotfiles/
-  mkdir -p $HOME/dotfiles/
-  cp -r /tmp/dotfiles/. $HOME/dotfiles/
-
-SOURCE_DIR="$HOME/dotfiles/"
-TARGET_DIR="$HOME/"
-
-# Loop through each item in the source directory
-for item in "$SOURCE_DIR"/*; do
-  # Get the basename of the item (file or directory name without path)
-  item_name=$(basename "$item")
-  target_item="$TARGET_DIR/$item_name"
-
-  if [[ -e "$target_item" ]]; then
-    if [[ -L "$target_item" ]]; then
-      rm "$target_item"
-    elif [[ "$item_name" == ".config" && -d "$target_item" ]]; then
-      for subitem in "$item"/*; do
-        subitem_name=$(basename "$subitem")
-        target_subitem="$target_item/$subitem_name"
-        if [[ -e "$target_subitem" ]]; then
-          if [[ -L "$target_subitem" ]]; then
-            rm "$target_subitem"
-          else
-            rm -rf "$target_subitem"
-          fi
-        fi
-      done
-    else
-      rm -rf "$target_item"
-    fi
-  fi
-done
-
-  cd $HOME/dotfiles/
-  stow .
-  cd
-
-fi
-
 #changing systemd logind.conf so that it won't turn off wifi when laptop lid is closed
 # Set HandleLidSwitch=ignore in /etc/systemd/logind.conf to prevent suspend on lid close
 if grep -qE '^\s*HandleLidSwitch=' /etc/systemd/logind.conf; then
@@ -126,6 +76,10 @@ if grep -qE '^\s*HandleLidSwitch=' /etc/systemd/logind.conf; then
 else
   echo 'HandleLidSwitch=ignore' | sudo tee -a /etc/systemd/logind.conf
 fi
+
+#installing dotfiles
+GITHUB_USERNAME=voltyea
+chezmoi init --apply $GITHUB_USERNAME
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
@@ -149,9 +103,6 @@ sudo chmod +x ./gtk.sh
 #installing spicetify
 sudo chmod +x ./spicetify.sh
 ./spicetify.sh
-
-#installing tpm for tmux
-git clone https://github.com/tmux-plugins/tpm/ $HOME/.config/tmux/plugins/tpm/
 
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
