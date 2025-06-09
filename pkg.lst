@@ -1,5 +1,3 @@
-hyprutils-git
-hyprwayland-scanner-git
 ags-hyprpanel-git
 aylurs-gtk-shell-git
 atuin
@@ -90,7 +88,6 @@ pokego
 polkit-kde-agent
 power-profiles-daemon
 python
-python-gpustat
 qt5-graphicaleffects
 qt5-quickcontrols2
 qt5-svg

@@ -51,6 +51,7 @@ sudo chmod +x ./update
 sudo cp ./update /usr/bin
 update
 sudo pacman -Syu --noconfirm
+xargs -a ./conflict_pkg.lst paru -Syu --needed --noconfirm
 xargs -a ./pkg.lst paru -Syu --needed --noconfirm
 
 #cpu stuff
@@ -80,6 +81,7 @@ fi
 #installing dotfiles
 GITHUB_USERNAME=voltyea
 chezmoi init --apply $GITHUB_USERNAME
+chezmoi update -v
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
