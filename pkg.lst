@@ -14,6 +14,7 @@ polkit-kde-agent
 base-devel
 base
 git
+lz4
 grub
 clang
 curl
@@ -29,8 +30,7 @@ yay
 paru
 neovim
 nautilus
-hyprpaper
-network-manager-applet
+swww
 networkmanager
 sddm
 fuse
@@ -49,7 +49,6 @@ rate-mirrors
 starship
 flatpak
 resources
-waybar
 fzf
 ripgrep
 fd
@@ -93,7 +92,6 @@ nwg-look
 libnotify
 unzip
 pamixer
-swayosd
 otf-font-awesome
 ttf-font-awesome
 pavucontrol
@@ -119,3 +117,4 @@ wireplumber
 cava
 spotify
 spicetify-cli
+ags-hyprpanel-git
