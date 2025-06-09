@@ -5,7 +5,7 @@ smartmontools
 wayland
 xdg-utils
 hyprland
-dunst
+hyprpicker
 kitty
 xdg-desktop-portal-hyprland
 qt5-wayland
@@ -62,6 +62,7 @@ libpng
 libwebp
 libjpeg
 ttf-firacode-nerd
+ttf-jetbrains-mono-nerd
 pango
 cairo
 libultrahdr
@@ -79,7 +80,8 @@ mtpfs
 xorg-xwayland
 xorg
 pokego
-cmatrix
+cmatrix-git
+playerctl
 pipes.sh
 gearlever
 mtp

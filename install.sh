@@ -75,12 +75,51 @@ version_gt() {
 }
 github_version=$(curl -s https://raw.githubusercontent.com/voltyea/dotfiles/main/VERSION.txt)
 local_version=""
-if [[ -f "$HOME/.config/VERSION.txt" ]]; then
-  local_version=$(cat "$HOME/.config/VERSION.txt")
+if [[ -f "$HOME/dotfiles/VERSION.txt" ]]; then
+  local_version=$(cat "$HOME/dotfiles/VERSION.txt")
 fi
 if version_gt "$github_version" "$local_version"; then
   git clone https://github.com/voltyea/dotfiles.git /tmp/dotfiles/
-  cp -r /tmp/dotfiles/. $HOME/.config/
+  mkdir -p $HOME/dotfiles/
+  cp -r /tmp/dotfiles/. $HOME/dotfiles/
+
+  SOURCE_DIR="$HOME/dotfiles/"
+  TARGET_DIR="$HOME/"
+
+  # Loop through each item in the source directory
+  for item in "$SOURCE_DIR"/*; do
+    # Get the basename of the item (file or directory name without path)
+    item_name=$(basename "$item")
+    target_item="$TARGET_DIR/$item_name"
+
+    if [[ -e "$target_item" ]]; then
+      if [[ -L "$target_item" ]]; then
+
+      elif [[ "$item_name" == ".config" && -d "$target_item" ]]; then
+
+        for subitem in "$item"/*; do
+          subitem_name=$(basename "$subitem")
+          target_subitem="$target_item/$subitem_name"
+          if [[ -e "$target_subitem" ]]; then
+            if [[ -L "$target_subitem" ]]; then
+
+            else
+
+              rm -rf "$target_subitem"
+            fi
+          fi
+        done
+      else
+
+        rm -rf "$target_item"
+      fi
+    fi
+  done
+
+  cd $HOME/dotfiles/
+  stow .
+  cd
+
 fi
 
 #changing systemd logind.conf so that it won't turn off wifi when laptop lid is closed
@@ -97,7 +136,7 @@ git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
 #installing sddm theme
 sudo chmod +x ./sddm.sh
 ./sddm.sh
-
+cp dotfiles/sddm/user_face_icons/user.face.icon $HOME/.face.icon
 #install catppuccin cursor theme
 sudo chmod +x ./cursor.sh
 ./cursor.sh
@@ -109,6 +148,10 @@ sudo chmod +x ./key.sh
 #Applying gtk theme
 sudo chmod +x ./gtk.sh
 ./gtk.sh
+
+#installing spicetify
+sudo chmod +x ./spicetify.sh
+./spicetify.sh
 
 #installing tpm for tmux
 git clone https://github.com/tmux-plugins/tpm/ $HOME/.config/tmux/plugins/tpm/
