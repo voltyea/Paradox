@@ -81,7 +81,6 @@ fi
 #installing dotfiles
 GITHUB_USERNAME=voltyea
 chezmoi init --apply $GITHUB_USERNAME
-chezmoi update -v
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
@@ -106,6 +105,8 @@ sudo chmod +x ./gtk.sh
 sudo chmod +x ./spicetify.sh
 ./spicetify.sh
 
+swww img $HOME/wallpapers/1_rain_world.png
+
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
   wget -P /tmp/ https://github.com/nyarchlinux/nyarchassistant/releases/latest/download/nyarchassistant.flatpak
@@ -116,9 +117,9 @@ fi
 if ! flatpak list | grep -q "moe.nyarchlinux.waifudownloader"; then
   wget -P /tmp/ https://github.com/nyarchlinux/waifudownloader/releases/latest/download/waifudownloader.flatpak
 fi
-flatpak install -y /tmp/nyarchassistant.flatpak
-flatpak install -y /tmp/catgirldownloader.flatpak
-flatpak install -y /tmp/waifudownloader.flatpak
+flatpak install /tmp/nyarchassistant.flatpak
+flatpak install /tmp/catgirldownloader.flatpak
+flatpak install /tmp/waifudownloader.flatpak
 
 #starting services
 sudo systemctl enable sddm.service
