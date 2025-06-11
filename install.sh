@@ -101,12 +101,6 @@ sudo chmod +x ./key.sh
 sudo chmod +x ./gtk.sh
 ./gtk.sh
 
-#installing spicetify
-sudo chmod +x ./spicetify.sh
-./spicetify.sh
-
-swww img $HOME/wallpapers/1_rain_world.png
-
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
   wget -P /tmp/ https://github.com/nyarchlinux/nyarchassistant/releases/latest/download/nyarchassistant.flatpak
