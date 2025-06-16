@@ -1,1 +1,2 @@
-My Hyprland install script
+You expected a README...
+!(dio.jpg)

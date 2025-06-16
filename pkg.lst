@@ -102,7 +102,6 @@ sddm
 smartmontools
 spicetify-cli
 spotify
-starship
 swww
 tmux
 tree
@@ -131,3 +130,4 @@ yank
 yay
 yazi
 zoxide
+oh-my-posh
