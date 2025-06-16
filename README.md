@@ -16,6 +16,7 @@ https://github.com/voltyea/my_wallpapers
 
 To install my setup just run these commands
 ```
-```git clone https://github.com/voltyea/hyprland.git
+git clone https://github.com/voltyea/hyprland.git
 cd hyprland
-sudo chmod +x install.sh```
+sudo chmod +x install.sh
+./install.sh
