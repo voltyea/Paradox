@@ -34,25 +34,26 @@ sudo sed -i '/^\[multilib\]/,/^\[/{s/^#\(Include = \/etc\/pacman\.d\/mirrorlist\
 
 # adding chaotic-aur
 if [ ! -f /etc/pacman.d/chaotic-mirrorlist ]; then
-  sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com &&
-    echo "y" | sudo pacman-key --lsign-key 3056513887B78AEB
 
-  sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-  sudo pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+  sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+  sudo pacman-key --lsign-key 3056513887B78AEB
+
+  sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+  sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
   if ! grep -qF "[chaotic-aur]" /etc/pacman.conf; then
     echo -e "\n\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
-    sudo pacman -Syu --noconfirm
+    sudo pacman -Syu
   fi
 fi
 
-sudo pacman -Syu --needed --noconfirm rate-mirrors paru
+sudo pacman -Syu --needed rate-mirrors paru
 sudo chmod +x ./update
 sudo cp ./update /usr/bin
 update
-sudo pacman -Syu --noconfirm
-xargs -a ./conflict_pkg.lst paru -Syu --needed --noconfirm
-xargs -a ./pkg.lst paru -Syu --needed --noconfirm
+sudo pacman -Syu
+xargs -a ./conflict_pkg.lst paru -Syu --needed
+xargs -a ./pkg.lst paru -Syu --needed
 
 #cpu stuff
 vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
@@ -104,16 +105,16 @@ sudo chmod +x ./gtk.sh
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
   wget -P /tmp/ https://github.com/nyarchlinux/nyarchassistant/releases/latest/download/nyarchassistant.flatpak
+  flatpak install /tmp/nyarchassistant.flatpak
 fi
 if ! flatpak list | grep -q "moe.nyarchlinux.catgirldownloader"; then
   wget -P /tmp/ https://github.com/nyarchlinux/catgirldownloader/releases/latest/download/catgirldownloader.flatpak
+  flatpak install /tmp/catgirldownloader.flatpak
 fi
 if ! flatpak list | grep -q "moe.nyarchlinux.waifudownloader"; then
   wget -P /tmp/ https://github.com/nyarchlinux/waifudownloader/releases/latest/download/waifudownloader.flatpak
+  flatpak install /tmp/waifudownloader.flatpak
 fi
-flatpak install /tmp/nyarchassistant.flatpak
-flatpak install /tmp/catgirldownloader.flatpak
-flatpak install /tmp/waifudownloader.flatpak
 
 #starting services
 sudo systemctl enable sddm.service
