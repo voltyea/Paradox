@@ -59,10 +59,10 @@ xargs -a ./pkg.lst paru -Syu --needed
 vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
 case "$vendor" in
 GenuineIntel)
-  sudo pacman -S --needed --noconfirm intel-ucode intel-media-driver libva-intel-driver vulkan-intel lib32-vulkan-intel
+  sudo pacman -S --needed intel-ucode intel-media-driver libva-intel-driver vulkan-intel lib32-vulkan-intel
   ;;
 AuthenticAMD)
-  sudo pacman -S --needed --noconfirm amd-ucode libva-mesa-driver vulkan-radeon xf86-video-amdgpu xf86-video-ati lib32-vulkan-radeon
+  sudo pacman -S --needed amd-ucode libva-mesa-driver vulkan-radeon xf86-video-amdgpu xf86-video-ati lib32-vulkan-radeon
   ;;
 esac
 
