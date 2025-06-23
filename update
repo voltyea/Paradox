@@ -30,12 +30,14 @@ sudo -v
 (
   # Arch mirrors
   if [ -f /etc/pacman.d/mirrorlist ]; then
-    rate-mirrors --allow-root --disable-comments --protocol https arch | sudo tee /etc/pacman.d/mirrorlist >/dev/null
+    rate-mirrors --allow-root --disable-comments --protocol https arch | sudo tee /tmp/arch_mirrorlist >/dev/null &&
+    cp /tmp/arch_mirrorlist /etc/pacman.d/mirrorlist
   fi
 
   # Chaotic-AUR
   if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
-    rate-mirrors --allow-root --disable-comments --protocol https chaotic-aur | sudo tee /etc/pacman.d/chaotic-mirrorlist >/dev/null
+    rate-mirrors --allow-root --disable-comments --protocol https chaotic-aur | sudo tee /tmp/chaotic_mirrorlist >/dev/null &&
+    cp /tmp/chaotic_mirrorlist /etc/pacman.d/chaotic-mirrorlist
   fi
 ) &
 CMD_PID=$! # Capture background process PID
