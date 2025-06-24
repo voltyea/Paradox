@@ -96,7 +96,7 @@ qt6-wayland
 rate-mirrors
 resources
 ripgrep
-rofi
+rofi-wayland
 rustup
 sddm
 smartmontools
