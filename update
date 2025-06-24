@@ -32,7 +32,7 @@ sudo -v
   if [ -f /etc/pacman.d/mirrorlist ]; then
     rate-mirrors --allow-root --disable-comments --protocol https arch | tee /tmp/arch_mirrorlist >/dev/null
     if [ -s /tmp/arch_mirrorlist ]; then
-      cp /tmp/arch_mirrorlist /etc/pacman.d/mirrorlist
+      sudo cp /tmp/arch_mirrorlist /etc/pacman.d/mirrorlist
    fi
   fi
 
@@ -40,7 +40,7 @@ sudo -v
   if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
     rate-mirrors --allow-root --disable-comments --protocol https chaotic-aur | tee /tmp/chaotic_mirrorlist >/dev/null
     if [ -s /tmp/arch_mirrorlist ]; then
-      cp /tmp/chaotic_mirrorlist /etc/pacman.d/chaotic-mirrorlist
+      sudo cp /tmp/chaotic_mirrorlist /etc/pacman.d/chaotic-mirrorlist
    fi
   fi
 ) &
