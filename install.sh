@@ -82,6 +82,7 @@ fi
 #installing dotfiles
 GITHUB_USERNAME=voltyea
 chezmoi init --apply $GITHUB_USERNAME
+chezmoi update -v
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
