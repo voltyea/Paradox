@@ -1,6 +1,5 @@
 ags-hyprpanel-git
 aylurs-gtk-shell-git
-atuin
 base
 base-devel
 bluez
@@ -133,3 +132,4 @@ zoxide
 oh-my-posh
 hyprshot
 loupe
+eww

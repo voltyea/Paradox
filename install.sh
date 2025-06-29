@@ -6,11 +6,13 @@ rfkill unblock bluetooth
 # adding chaotic-aur
 if [ ! -f /etc/pacman.d/chaotic-mirrorlist ]; then
 
-{ sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-  sudo pacman-key --lsign-key 3056513887B78AEB
+  {
+    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    sudo pacman-key --lsign-key 3056513887B78AEB
 
-  sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-  sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'; } || { exit 1; }
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+  } || { exit 1; }
 
   if ! grep -qF "[chaotic-aur]" /etc/pacman.conf; then
     echo -e "\n\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
@@ -79,6 +81,9 @@ else
   echo 'HandleLidSwitch=ignore' | sudo tee -a /etc/systemd/logind.conf
 fi
 
+#installing rust
+rustup default stable
+
 #installing dotfiles
 GITHUB_USERNAME=voltyea
 chezmoi init --apply $GITHUB_USERNAME
@@ -102,6 +107,10 @@ sudo chmod +x ./key.sh
 #Applying gtk theme
 sudo chmod +x ./gtk.sh
 ./gtk.sh
+
+#installing nessecary fonts
+sudo chmod +x ./font.sh
+./font.sh
 
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
