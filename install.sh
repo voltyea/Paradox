@@ -53,6 +53,7 @@ sudo pacman -Syu --needed rate-mirrors paru
 sudo chmod +x ./update
 sudo cp ./update /usr/bin
 update
+update
 sudo pacman -Syu
 xargs -a ./conflict_pkg.lst paru -Syu --needed
 xargs -a ./pkg.lst paru -Syu --needed
@@ -87,6 +88,7 @@ rustup default stable
 #installing dotfiles
 GITHUB_USERNAME=voltyea
 chezmoi init --apply $GITHUB_USERNAME
+chezmoi apply
 chezmoi update -v
 
 #copying wallpapers
