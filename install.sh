@@ -3,10 +3,22 @@
 rfkill unblock wlan
 rfkill unblock bluetooth
 
-# installing yay
-git clone https://aur.archlinux.org/yay.git /tmp/yay/
-cd /tmp/yay/
-makepkg -si
+# adding chaotic-aur
+if [ ! -f /etc/pacman.d/chaotic-mirrorlist ]; then
+
+  {
+    sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    sudo pacman-key --lsign-key 3056513887B78AEB
+
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+    sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+  } || { exit 1; }
+
+  if ! grep -qF "[chaotic-aur]" /etc/pacman.conf; then
+    echo -e "\n\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
+    sudo pacman -Syu
+  fi
+fi
 
 #adding insults to sudo
 echo "Defaults insults" | sudo tee /etc/sudoers.d/insults
@@ -37,14 +49,14 @@ EOF
 fi
 sudo sed -i '/^\[multilib\]/,/^\[/{s/^#\(Include = \/etc\/pacman\.d\/mirrorlist\)/\1/}' /etc/pacman.conf
 
-yay -S --needed rate-mirrors
+sudo pacman -Syu --needed rate-mirrors paru
 sudo chmod +x ./update
 sudo cp ./update /usr/bin
 update
 update
 sudo pacman -Syu
-xargs -a ./conflict_pkg.lst yay -Syu --needed
-xargs -a ./pkg.lst yay -Syu --needed
+xargs -a ./conflict_pkg.lst paru -Syu --needed
+xargs -a ./pkg.lst paru -Syu --needed
 
 #cpu stuff
 vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
