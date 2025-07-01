@@ -4,8 +4,8 @@ rfkill unblock wlan
 rfkill unblock bluetooth
 
 # installing yay
-git clone https://aur.archlinux.org/yay.git $HOME/yay/
-cd $HOME/yay/
+git clone https://aur.archlinux.org/yay.git /tmp/yay/
+cd /tmp/yay/
 makepkg -si
 
 #adding insults to sudo
