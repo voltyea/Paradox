@@ -37,14 +37,14 @@ EOF
 fi
 sudo sed -i '/^\[multilib\]/,/^\[/{s/^#\(Include = \/etc\/pacman\.d\/mirrorlist\)/\1/}' /etc/pacman.conf
 
-sudo pacman -Syu --needed rate-mirrors paru
+yay -S --needed rate-mirrors
 sudo chmod +x ./update
 sudo cp ./update /usr/bin
 update
 update
 sudo pacman -Syu
-xargs -a ./conflict_pkg.lst paru -Syu --needed
-xargs -a ./pkg.lst paru -Syu --needed
+xargs -a ./conflict_pkg.lst yay -Syu --needed
+xargs -a ./pkg.lst yay -Syu --needed
 
 #cpu stuff
 vendor=$(grep -m 1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
