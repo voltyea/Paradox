@@ -73,7 +73,6 @@ otf-font-awesome
 pacman-contrib
 pamixer
 pango
-paru
 pavucontrol
 perl
 pipes.sh
@@ -126,10 +125,10 @@ xorg-server
 xorg-xinit
 xorg-xwayland
 yank
-yay
 yazi
 zoxide
 oh-my-posh
 hyprshot
 loupe
-eww
+eww-systemd
+waypaper
