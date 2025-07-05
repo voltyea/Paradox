@@ -114,33 +114,6 @@ sudo chmod +x ./gtk.sh
 sudo chmod +x ./font.sh
 ./font.sh
 
-#applying wallpaper
-
-FILE="$HOME/.local/share/chezmoi/dot_config/hypr/hyprland.conf"
-LINE='exec-once = $HOME/.config/hypr/wallpaper.sh'
-
-# Escape for regex matching
-ESCAPED_LINE=$(printf '%s\n' "$LINE" | sed 's/[.[\*^$/]/\\&/g')
-
-# Uncomment the line (remove leading #)
-sed -i "s|^#${ESCAPED_LINE}\$|$LINE|" "$FILE"
-
-FILE2="$HOME/.config/hypr/hyprland.conf"
-
-# Escape for regex matching
-ESCAPED_LINE=$(printf '%s\n' "$LINE" | sed 's/[.[\*^$/]/\\&/g')
-
-# Uncomment the line (remove leading #)
-sed -i "s|^#${ESCAPED_LINE}\$|$LINE|" "$FILE2"
-
-chezmoi apply
-
-cp ./wallpaper.sh $HOME/.config/hypr/
-sudo chmod +x $HOME/.config/hypr/wallpaper.sh
-
-cp ./wallpaper2.sh $HOME/.config/hypr/
-sudo chmod +x $HOME/.config/hypr/wallpaper2.sh
-
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
   wget -P /tmp/ https://github.com/nyarchlinux/nyarchassistant/releases/latest/download/nyarchassistant.flatpak

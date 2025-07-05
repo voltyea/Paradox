@@ -2,6 +2,7 @@ ags-hyprpanel-git
 aylurs-gtk-shell-git
 base
 base-devel
+bc
 bluez
 bluez-utils
 brightnessctl
@@ -19,6 +20,7 @@ cmatrix-git
 cpio
 curl
 dart-sass
+eww
 fastfetch
 fd
 ffmpeg
@@ -39,6 +41,7 @@ gvfs
 gvfs-mtp
 hyprland
 hyprpicker
+hyprshot
 hyprsunset-git
 imagemagick
 jmtpfs
@@ -55,6 +58,7 @@ libultrahdr
 libwebp
 linux-zen
 linux-zen-headers
+loupe
 lz4
 matugen-bin
 mesa
@@ -69,10 +73,12 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 nwg-look
+oh-my-posh
 otf-font-awesome
 pacman-contrib
 pamixer
 pango
+paru
 pavucontrol
 perl
 pipes.sh
@@ -111,6 +117,7 @@ upower
 vulkan-swrast
 vulkan-tools
 wayland
+waypaper
 wf-recorder-git
 wget
 wireless_tools
@@ -125,10 +132,6 @@ xorg-server
 xorg-xinit
 xorg-xwayland
 yank
+yay
 yazi
 zoxide
-oh-my-posh
-hyprshot
-loupe
-eww
-waypaper
