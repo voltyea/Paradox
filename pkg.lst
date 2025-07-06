@@ -43,6 +43,7 @@ gtksourceview3
 gvfs
 gvfs-mtp
 hyprland
+hyprpaper
 hyprpicker
 hyprshot
 hyprsunset-git
@@ -111,7 +112,6 @@ sddm
 smartmontools
 spicetify-cli
 spotify
-swww
 tmux
 tree
 ttf-firacode-nerd
