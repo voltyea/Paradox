@@ -114,6 +114,13 @@ sudo chmod +x ./gtk.sh
 sudo chmod +x ./font.sh
 ./font.sh
 
+#setting default gtk theme
+cp ./gtk_theme/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/
+cp ./gtk_theme/.gtkrc-2.0 $HOME/
+
+#setting electron flags
+cp ./electron_flags/electron-flags.conf $HOME/.config/
+
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then
   wget -P /tmp/ https://github.com/nyarchlinux/nyarchassistant/releases/latest/download/nyarchassistant.flatpak

@@ -37,6 +37,8 @@ gpp
 grimblast-git
 grub
 gst-plugin-pipewire
+gtk-layer-shell
+gtk3
 gtksourceview3
 gvfs
 gvfs-mtp
@@ -73,6 +75,8 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
+nwg-dock-hyprland
+nwg-drawer
 nwg-look
 oh-my-posh
 otf-font-awesome
@@ -119,6 +123,7 @@ vulkan-swrast
 vulkan-tools
 wayland
 waypaper
+wev
 wf-recorder-git
 wget
 wireless_tools
