@@ -28,7 +28,7 @@ sudo -v
 
 # Run mirror update in background
 
-country=curl ipinfo.io/country
+country=$(curl -s ipinfo.io/country)
 
 (
   # Arch mirrors
@@ -42,7 +42,7 @@ country=curl ipinfo.io/country
   # Chaotic-AUR
   if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
     rate-mirrors --allow-root --disable-comments --protocol https --entry-country $country chaotic-aur | tee /tmp/chaotic_mirrorlist >/dev/null
-    if [ -s /tmp/arch_mirrorlist ]; then
+    if [ -s /tmp/chaotic_mirrorlist ]; then
       sudo cp /tmp/chaotic_mirrorlist /etc/pacman.d/chaotic-mirrorlist
    fi
   fi
