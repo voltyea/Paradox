@@ -33,7 +33,7 @@ country=$(curl -s ipinfo.io/country)
 (
   # Arch mirrors
   if [ -f /etc/pacman.d/mirrorlist ]; then
-    rate-mirrors --allow-root --disable-comments --protocol https --entry-country $country arch | tee /tmp/arch_mirrorlist >/dev/null
+    rate-mirrors --allow-root --disable-comments --protocol https --entry-country "$country" arch | tee /tmp/arch_mirrorlist >/dev/null
     if [ -s /tmp/arch_mirrorlist ]; then
       sudo cp /tmp/arch_mirrorlist /etc/pacman.d/mirrorlist
    fi
@@ -41,7 +41,7 @@ country=$(curl -s ipinfo.io/country)
 
   # Chaotic-AUR
   if [ -f /etc/pacman.d/chaotic-mirrorlist ]; then
-    rate-mirrors --allow-root --disable-comments --protocol https --entry-country $country chaotic-aur | tee /tmp/chaotic_mirrorlist >/dev/null
+    rate-mirrors --allow-root --disable-comments --protocol https --entry-country "$country" chaotic-aur | tee /tmp/chaotic_mirrorlist >/dev/null
     if [ -s /tmp/chaotic_mirrorlist ]; then
       sudo cp /tmp/chaotic_mirrorlist /etc/pacman.d/chaotic-mirrorlist
    fi
