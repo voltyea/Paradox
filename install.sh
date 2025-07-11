@@ -115,11 +115,14 @@ sudo chmod +x ./font.sh
 ./font.sh
 
 #setting default gtk theme
-cp ./gtk_theme/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/
+cp -r ./gtk_theme/gtk-3.0/ $HOME/.config/
 cp ./gtk_theme/.gtkrc-2.0 $HOME/
+cp -r ./gtk_theme/nwg-look/ $HOME/.config/
+cp -r ./gtk_theme/xsettingsd/ $HOME/.config/
 
 #setting electron flags
 cp ./electron_flags/electron-flags.conf $HOME/.config/
+cp ./electron_flags/spotify-flags.conf $HOME/.config/
 
 #hyprpaper
 cp ./hyprpaper/hyprpaper.conf $HOME/.config/hypr/hyprpaper.conf
