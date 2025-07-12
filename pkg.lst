@@ -111,6 +111,7 @@ rofi-wayland
 rustup
 sddm
 smartmontools
+socat
 spicetify-cli
 spotify
 tmux
