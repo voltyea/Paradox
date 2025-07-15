@@ -89,8 +89,12 @@ rustup default stable
 mkdir -p $HOME/.local/share/voltyea/
 git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/voltyea/dotfiles/
 git -C $HOME/.local/share/voltyea/dotfiles/ pull
-rsync -a --exclude-from='$HOME/.local/share/voltyea/dotfiles/.rsyncignore' $HOME/.local/share/voltyea/dotfiles/ $HOME/
-stow -t $HOME/ --adopt $HOME/.local/share/voltyea/dotfiles/.
+rsync -a --exclude-from="$HOME/.local/share/voltyea/dotfiles/.rsyncignore" $HOME/.local/share/voltyea/dotfiles/ $HOME/
+STARTDIR=$(pwd)
+cd $HOME/.local/share/voltyea/dotfiles/
+# Do your work...
+stow -t $HOME/ --adopt .
+cd "$STARTDIR"
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
