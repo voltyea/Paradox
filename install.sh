@@ -86,13 +86,15 @@ fi
 rustup default stable
 
 #installing dotfiles
-GITHUB_USERNAME=voltyea
-chezmoi init --apply $GITHUB_USERNAME
-chezmoi apply
-chezmoi update -v
+mkdir -p $HOME/.local/share/voltyea/
+git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/voltyea/dotfiles/
+git -C $HOME/.local/share/voltyea/dotfiles/ pull
+rsync -a $HOME/.local/share/voltyea/dotfiles/ $HOME/
+stow -t $HOME/ --adopt $HOME/.local/share/voltyea/dotfiles/.
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
+git -C $HOME/wallpapers/ pull
 
 #installing sddm theme
 sudo chmod +x ./sddm.sh

@@ -13,7 +13,6 @@ catppuccin-cursors-mocha
 catppuccin-gtk-theme-mocha
 cava
 chafa
-chezmoi
 clang
 cliphist
 cmake
@@ -109,12 +108,14 @@ rate-mirrors
 resources
 ripgrep
 rofi-wayland
+rsync
 rustup
 sddm
 smartmontools
 socat
 spicetify-cli
 spotify
+stow
 tmux
 tree
 ttf-firacode-nerd
