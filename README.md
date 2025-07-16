@@ -21,8 +21,3 @@ cd hyprland
 sudo chmod +x install.sh
 ./install.sh
 ```
-
-Or you can install it with Chezmoi with just one command.
-```
-chezmoi init --apply voltyea
-```

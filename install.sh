@@ -86,15 +86,13 @@ fi
 rustup default stable
 
 #installing dotfiles
-mkdir -p $HOME/.local/share/voltyea/
-git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/voltyea/dotfiles/
-git -C $HOME/.local/share/voltyea/dotfiles/ pull
-rsync -a --exclude-from="$HOME/.local/share/voltyea/dotfiles/.rsyncignore" $HOME/.local/share/voltyea/dotfiles/ $HOME/
-STARTDIR=$(pwd)
-cd $HOME/.local/share/voltyea/dotfiles/
-# Do your work...
-stow -t $HOME/ --adopt .
-cd "$STARTDIR"
+mkdir -p "$HOME/.local/share/paradox/"
+git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/paradox/dotfiles/
+git -C $HOME/.local/share/paradox/dotfiles/ pull
+{ rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" $HOME/.local/share/paradox/dotfiles/ $HOME/ } &&
+  { pushd "$HOME/.local/share/paradox/dotfiles/" &&
+  stow -t $HOME/ --adopt .
+  popd }
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
@@ -121,17 +119,17 @@ sudo chmod +x ./font.sh
 ./font.sh
 
 #setting default gtk theme
-cp -r ./gtk_theme/gtk-3.0/ $HOME/.config/
-cp ./gtk_theme/.gtkrc-2.0 $HOME/
-cp -r ./gtk_theme/nwg-look/ $HOME/.config/
-cp -r ./gtk_theme/xsettingsd/ $HOME/.config/
+#cp -r ./gtk_theme/gtk-3.0/ $HOME/.config/
+#cp ./gtk_theme/.gtkrc-2.0 $HOME/
+#cp -r ./gtk_theme/nwg-look/ $HOME/.config/
+#cp -r ./gtk_theme/xsettingsd/ $HOME/.config/
 
 #setting electron flags
-cp ./electron_flags/electron-flags.conf $HOME/.config/
-cp ./electron_flags/spotify-flags.conf $HOME/.config/
+#cp ./electron_flags/electron-flags.conf $HOME/.config/
+#cp ./electron_flags/spotify-flags.conf $HOME/.config/
 
 #hyprpaper
-cp ./hyprpaper/hyprpaper.conf $HOME/.config/hypr/hyprpaper.conf
+#cp ./hyprpaper/hyprpaper.conf $HOME/.config/hypr/hyprpaper.conf
 
 #Nyarch goodies >⩊<
 if ! flatpak list | grep -q "moe.nyarchlinux.assistant"; then

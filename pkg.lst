@@ -111,6 +111,7 @@ rofi-wayland
 rsync
 rustup
 sddm
+sh
 smartmontools
 socat
 spicetify-cli
@@ -123,6 +124,7 @@ ttf-font-awesome
 ttf-jetbrains-mono-nerd
 unzip
 upower
+vi
 vulkan-swrast
 vulkan-tools
 wayland
