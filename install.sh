@@ -91,8 +91,8 @@ git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/paradox/dot
 git -C $HOME/.local/share/paradox/dotfiles/ pull
 { rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" $HOME/.local/share/paradox/dotfiles/ $HOME/ } && 
 { pushd "$HOME/.local/share/paradox/dotfiles/" && 
-stow -t $HOME/ --adopt . &&
-popd && }
+stow -t $HOME/ --adopt .
+popd; }
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
