@@ -4,10 +4,22 @@ case "$1" in
 cd)
   (cd "$HOME/.local/share/paradox/dotfiles/" && $SHELL)
   ;;
-add) ;;
-list)
-  echo "Listing files in current directory:"
-  ls
+add)
+  if [ -z "$2" ]; then
+    echo "Usage: $0 <file_path>"
+    exit 1
+  fi
+
+  # Extract the directory and filename
+  file_path="$2"
+  dir_path=$(dirname "$file_path")
+  file_name=$(basename "$file_path")
+
+  # Change to the directory
+  rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$file_path" $HOME/.local/share/paradox/dotfiles/
+  pushd "$HOME/.local/share/paradox/dotfiles/"
+  stow -t $HOME/ --adopt "$file_name"
+  popd
   ;;
 help | --help | -h)
   echo "Usage: $0 {greet|sum|list|help} [arguments]"
