@@ -16,8 +16,8 @@ https://github.com/voltyea/my_wallpapers
 
 You can install my dotfiles manually by running
 ```
-git clone https://github.com/voltyea/hyprland.git
-cd hyprland
+git clone https://github.com/voltyea/Paradox.git
+cd Paradox
 sudo chmod +x install.sh
 ./install.sh
 ```
