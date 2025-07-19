@@ -5,20 +5,11 @@ cd)
   (cd "$HOME/.local/share/paradox/dotfiles/" && $SHELL)
   ;;
 add)
-  if [ -z "$2" ]; then
-    echo "Usage: $0 <file_path>"
-    exit 1
-  fi
-
-  # Extract the directory and filename
-  file_path="$2"
-  dir_path=$(dirname "$file_path")
-  file_name=$(basename "$file_path")
-
-  # Change to the directory
-  rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$file_path" $HOME/.local/share/paradox/dotfiles/
+path="$2"
+name=$(basename "$path")
+  rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$path" $HOME/.local/share/paradox/dotfiles/
   pushd "$HOME/.local/share/paradox/dotfiles/"
-  stow -t $HOME/ --adopt "$file_name"
+  stow -t $HOME/ --adopt "$name"
   popd
   ;;
 help | --help | -h)
