@@ -1,26 +1,40 @@
 #!/bin/bash
 
+function Help() {
+  cat <<EOF
+Usage: paradox [option] [path_to_file]
+
+Options:
+  -h, --help                show help message
+  cd                        change directory to the Paradox dotfiles directory
+  add                       add the file to the Paradox directory
+  remove                    remove the file from the Paradox directory
+EOF
+}
+
 case "$1" in
+-h | --help)
+  Help
+  ;;
 cd)
   (cd "$HOME/.local/share/paradox/dotfiles/" && $SHELL)
   ;;
 add)
-path="$2"
-name=$(basename "$path")
-  rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$path" $HOME/.local/share/paradox/dotfiles/
+  rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$2" $HOME/.local/share/paradox/dotfiles/
   pushd "$HOME/.local/share/paradox/dotfiles/"
-  stow -t $HOME/ --adopt "$name"
+  stow -t $HOME/ --adopt .
   popd
   ;;
-help | --help | -h)
-  echo "Usage: $0 {greet|sum|list|help} [arguments]"
-  echo "  greet NAME   - Greet the user by NAME"
-  echo "  sum N1 N2    - Sum two numbers"
-  echo "  list         - List files in current directory"
-  echo "  help         - Show this help message"
+remove)
+  input_path="$2"
+  relative_path="${input_path/#$HOME/}"
+  if [ "$relative_path" != "/" ]; then
+    relative_path="${relative_path%/}"
+  fi
+  rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" --remove-source-files "$HOME/.local/share/paradox/dotfiles/$relative_path" $HOME/
   ;;
 *)
   echo "Unknown option: $1"
-  echo "Use '$0 help' to see available options."
+  Help
   ;;
 esac
