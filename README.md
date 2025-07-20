@@ -1,6 +1,6 @@
 ## YOU WERE EXPECTING A README...
 
-![](dio.jpg)
+![](assets/paradox_logo.svg)
 
 ## Anyways...
 
