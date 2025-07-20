@@ -89,9 +89,9 @@ rustup default stable
 mkdir -p "$HOME/.local/share/paradox/"
 git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/paradox/dotfiles/
 git -C $HOME/.local/share/paradox/dotfiles/ pull
-rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" $HOME/.local/share/paradox/dotfiles/ $HOME/ && 
-pushd "$HOME/.local/share/paradox/dotfiles/" &&
-stow -t $HOME/ --adopt .
+rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" $HOME/.local/share/paradox/dotfiles/ $HOME/ &&
+  pushd "$HOME/.local/share/paradox/dotfiles/" &&
+  stow -t $HOME/ --adopt .
 popd
 
 #copying wallpapers
@@ -117,6 +117,10 @@ sudo chmod +x ./gtk.sh
 #installing nessecary fonts
 sudo chmod +x ./font.sh
 ./font.sh
+
+#installing the paradox cli script. Usage- just type "paradox"
+sudo chmod +x ./paradox
+sudo cp ./paradox /usr/bin
 
 #setting default gtk theme
 #cp -r ./gtk_theme/gtk-3.0/ $HOME/.config/
