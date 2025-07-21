@@ -1,6 +1,6 @@
 ## YOU WERE EXPECTING A README...
 
-![](assets/amethyst_logo.png)
+![](assets/amethyst.png)
 
 ## Anyways...
 
