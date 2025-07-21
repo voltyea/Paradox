@@ -1,6 +1,6 @@
 ## YOU WERE EXPECTING A README...
 
-![](assets/paradox.svg)
+![](assets/amethyst_logo.png)
 
 ## Anyways...
 
