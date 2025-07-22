@@ -29,3 +29,18 @@ cd Paradox
 sudo chmod +x install.sh
 ./install.sh
 ```
+
+<h2><sub><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Package.png" alt="Package" width="25" height="25" /></sub> Installation</h2>
+
+> [!NOTE]
+> You need a functioning Hyprland installation.
+
+### Arch Linux
+
+> [!TIP]
+> This command also works for updating an existing installation!
+
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Axenide/Ax-Shell/main/install.sh | bash
+```
