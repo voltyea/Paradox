@@ -7,7 +7,7 @@
 <p align="center">
   <sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
 <a href="https://github.com/voltyea/Amethyst">
-    <img src="https://img.shields.io/github/last-commit/end-4/dots-hyprland?&style=for-the-badge&color=8ad7eb&logo=git&logoColor=D9E0EE&labelColor=1E202B"
+    <img src="https://img.shields.io/github/last-commit/voltyea/Amethyst?&style=for-the-badge&color=9966CC&logo=git&logoColor=FFFFFF&labelColor=28282B"
 <sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
   </a>
   </p>
