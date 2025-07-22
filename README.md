@@ -37,6 +37,7 @@ sudo chmod +x install.sh
 >Clone this repo in your home folder and run the installer script.
 
 >[!CAUTION]
+> If you are thinking of installing this setup alongside some other DE, please don't — it will probably break something.
 >DO NOT use sudo to run the installation script.
 
 
