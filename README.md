@@ -30,7 +30,7 @@ sudo chmod +x install.sh
 ./install.sh
 ```
 
-<h2><sub><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Package.png" alt="Package" width="25" height="25" /></sub> Installation</h2>
+### 📦 Installation
 
 > [!IMPORTANT]
 > Run the installation script on a fresh minimal installation of arch linux.
