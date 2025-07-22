@@ -32,8 +32,13 @@ sudo chmod +x install.sh
 
 <h2><sub><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Package.png" alt="Package" width="25" height="25" /></sub> Installation</h2>
 
-> [!NOTE]
-> You need a functioning Hyprland installation.
+> [!IMPORTANT]
+> Run the installation script on a fresh minimal installation of arch linux.
+>Clone this repo in your home folder and run the installer script.
+
+>[!CAUTION]
+>DO NOT use sudo to run the installation script.
+
 
 ### Arch Linux
 
