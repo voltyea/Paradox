@@ -1,6 +1,6 @@
 ## YOU WERE EXPECTING A README...
 
-![](assets/amethyst.png)
+![](assets/amethyst.svg)
 
 ## Anyways...
 
