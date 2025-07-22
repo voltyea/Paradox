@@ -2,13 +2,13 @@
 
 function Help() {
   cat <<EOF
-Usage: paradox [option] [path_to_file]
+Usage: amethyst-cli [option] [path_to_file]
 
 Options:
   -h, --help                show help message
-  cd                        change directory to the Paradox dotfiles directory
-  add                       add the file to the Paradox directory
-  remove                    remove the file from the Paradox directory
+  cd                        change directory to the Amethyst dotfiles directory
+  add                       add the file to the Amethyst directory
+  remove                    remove the file from the Amethyst directory
 EOF
 }
 
@@ -17,21 +17,20 @@ case "$1" in
   Help
   ;;
 cd)
-  (cd "$HOME/.local/share/paradox/dotfiles/" && $SHELL)
+  (cd "$HOME/.local/share/amethyst/dotfiles/" && $SHELL)
   ;;
 add)
   input_path="$2"
   relative_path="${input_path/#$HOME\//}"
-  pushd $HOME/ >>/dev/null
-  rsync -aR --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$relative_path" $HOME/.local/share/paradox/dotfiles/ &&
-    cd "$HOME/.local/share/paradox/dotfiles/" &&
-    stow -t $HOME/ --adopt .
-  popd >>/dev/null
+  pushd $HOME/ &&
+    rsync -aR --exclude-from="$HOME/.local/share/amethyst/dotfiles/.rsyncignore" "$relative_path" $HOME/.local/share/amethyst/dotfiles/ &&
+    stow -d "$HOME/.local/share/amethyst/dotfiles/" -t $HOME/ . --adopt
+  popd
   ;;
 remove)
   input_path="$2"
   relative_path="${input_path/#$HOME\//}"
-  rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" --remove-source-files "$HOME/.local/share/paradox/dotfiles/$relative_path" "$input_path"
+  rsync -a --exclude-from="$HOME/.local/share/amethyst/dotfiles/.rsyncignore" --remove-source-files "$HOME/.local/share/amethyst/dotfiles/$relative_path" "$input_path"
   ;;
 *)
   echo "Unknown option: $1"

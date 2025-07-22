@@ -90,9 +90,7 @@ mkdir -p "$HOME/.local/share/amethyst/"
 git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/amethyst/dotfiles/
 git -C $HOME/.local/share/amethyst/dotfiles/ pull
 rsync -a --exclude-from="$HOME/.local/share/amethyst/dotfiles/.rsyncignore" $HOME/.local/share/amethyst/dotfiles/ $HOME/ &&
-  pushd "$HOME/.local/share/amethyst/dotfiles/" &&
-  stow -t $HOME/ --adopt .
-popd
+  stow -d "$HOME/.local/share/amethyst/dotfiles/" -t $HOME/ . --adopt
 
 #copying wallpapers
 git clone https://github.com/voltyea/my_wallpapers.git $HOME/wallpapers/
