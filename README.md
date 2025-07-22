@@ -8,7 +8,9 @@
   <sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
 <a href="https://github.com/voltyea/Amethyst">
     <img src="https://img.shields.io/github/last-commit/end-4/dots-hyprland?&style=for-the-badge&color=8ad7eb&logo=git&logoColor=D9E0EE&labelColor=1E202B"
+<sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
   </a>
+  </p>
 
 This is an installation script to install and configure hyprland on arch linux.
 This script should be used with a minimal arch linux install and with only hyprland installed since it changes some very low system stuff.
