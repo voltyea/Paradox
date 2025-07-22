@@ -86,11 +86,11 @@ fi
 rustup default stable
 
 #installing dotfiles
-mkdir -p "$HOME/.local/share/paradox/"
-git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/paradox/dotfiles/
-git -C $HOME/.local/share/paradox/dotfiles/ pull
-rsync -a --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" $HOME/.local/share/paradox/dotfiles/ $HOME/ &&
-  pushd "$HOME/.local/share/paradox/dotfiles/" &&
+mkdir -p "$HOME/.local/share/amethyst/"
+git clone https://github.com/voltyea/dotfiles.git $HOME/.local/share/amethyst/dotfiles/
+git -C $HOME/.local/share/amethyst/dotfiles/ pull
+rsync -a --exclude-from="$HOME/.local/share/amethyst/dotfiles/.rsyncignore" $HOME/.local/share/amethyst/dotfiles/ $HOME/ &&
+  pushd "$HOME/.local/share/amethyst/dotfiles/" &&
   stow -t $HOME/ --adopt .
 popd
 
@@ -118,9 +118,9 @@ sudo chmod +x ./gtk.sh
 sudo chmod +x ./font.sh
 ./font.sh
 
-#installing the paradox cli script. Usage- just type "paradox"
-sudo chmod +x ./paradox
-sudo cp ./paradox /usr/bin
+#installing the amethyst-cli script. Usage- just type "amethyst-cli"
+sudo chmod +x ./amethyst-cli
+sudo cp ./amethyst-cli /usr/bin
 
 #setting default gtk theme
 #cp -r ./gtk_theme/gtk-3.0/ $HOME/.config/

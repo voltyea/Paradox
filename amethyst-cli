@@ -23,9 +23,9 @@ add)
   input_path="$2"
   relative_path="${input_path/#$HOME\//}"
   pushd $HOME/ >>/dev/null
-  rsync -aR --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$relative_path" $HOME/.local/share/paradox/dotfiles/
-  cd "$HOME/.local/share/paradox/dotfiles/"
-  stow -t $HOME/ --adopt .
+  rsync -aR --exclude-from="$HOME/.local/share/paradox/dotfiles/.rsyncignore" "$relative_path" $HOME/.local/share/paradox/dotfiles/ &&
+    cd "$HOME/.local/share/paradox/dotfiles/" &&
+    stow -t $HOME/ --adopt .
   popd >>/dev/null
   ;;
 remove)
