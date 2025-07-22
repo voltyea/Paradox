@@ -37,10 +37,10 @@ sudo chmod +x install.sh
 
 ### Arch Linux
 
-> [!TIP]
-> This command also works for updating an existing installation!
-
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Axenide/Ax-Shell/main/install.sh | bash
+git clone https://github.com/voltyea/Amethyst.git
+cd Amethyst
+sudo chmod +x install.sh
+./install.sh
 ```
