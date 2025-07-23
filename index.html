@@ -2,36 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scroll Animation Home Page</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smooth Scroll Animations</title>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 100px auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <h1>Welcome to Our Website</h1>
-    <p>Scroll down to see more</p>
+
+  <header>
+    <h1>Welcome to My Animated Page</h1>
+    <p>Scroll down to see elements animate into view</p>
   </header>
 
-  <section class="content reveal">
-    <h2>About Us</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis.</p>
+  <section data-aos="fade-up">
+    <h2>Section One</h2>
+    <p>This section fades in as you scroll down.</p>
   </section>
 
-  <section class="content reveal">
-    <h2>Our Services</h2>
-    <p>We offer web design, development, and digital marketing to help your business grow.</p>
+  <section data-aos="fade-left">
+    <h2>Section Two</h2>
+    <p>This one slides in from the left.</p>
   </section>
 
-  <section class="content reveal">
-    <h2>Contact</h2>
-    <p>Get in touch via email or follow us on social media for the latest updates.</p>
+  <section data-aos="zoom-in">
+    <h2>Section Three</h2>
+    <p>Zoom effect on scroll!</p>
   </section>
 
-  <footer class="footer">
-    <p>&copy; 2025 MyWebsite. All rights reserved.</p>
-  </footer>
+  <section data-aos="flip-up">
+    <h2>Section Four</h2>
+    <p>Animated flip up effect using AOS.</p>
+  </section>
 
-  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,  // animation duration in ms
+      once: true       // whether animation should happen only once
+    });
+  </script>
 </body>
 </html>
-
