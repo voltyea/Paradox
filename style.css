@@ -1,54 +1,55 @@
-/* Raiden Shogun inspired style */
-body, html {
+body {
   margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #1b112b;
-  color: #eee;
+  background: #f7f9fc;
+  color: #333;
+  scroll-behavior: smooth;
 }
 
 .hero {
   height: 100vh;
-  background: linear-gradient(to bottom, #2b1a4b, #1b112b);
-  background-image: url('https://i.imgur.com/BM7xTrm.jpeg'); /* Replace with official art if hosted */
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-top: 1rem;
 }
 
 .content {
-  text-align: center;
-  background-color: rgba(27, 17, 43, 0.75);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 0 20px #9b59b6;
+  padding: 100px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-h1 {
-  font-size: 3rem;
-  color: #c084fc;
-  text-shadow: 0 0 10px #7c3aed;
+.content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-p {
-  font-size: 1.2rem;
-  margin: 1rem 0;
-}
-
-button {
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #7c3aed;
+.footer {
+  background: #222;
   color: white;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  text-align: center;
+  padding: 40px 0;
 }
 
-button:hover {
-  background-color: #a78bfa;
+/* Reveal class triggered by JavaScript */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
-
