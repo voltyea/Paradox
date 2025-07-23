@@ -1,0 +1,54 @@
+/* Raiden Shogun inspired style */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1b112b;
+  color: #eee;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(to bottom, #2b1a4b, #1b112b);
+  background-image: url('https://i.imgur.com/BM7xTrm.jpeg'); /* Replace with official art if hosted */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  background-color: rgba(27, 17, 43, 0.75);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #9b59b6;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #c084fc;
+  text-shadow: 0 0 10px #7c3aed;
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+button {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #7c3aed;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #a78bfa;
+}
+
