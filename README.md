@@ -8,7 +8,7 @@
   <sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
 <a href="https://github.com/voltyea/Amethyst">
     <img src="https://img.shields.io/github/last-commit/voltyea/Amethyst?&style=for-the-badge&color=9966CC&logo=git&logoColor=FFFFFF&labelColor=28282B"
-<sub><sup><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
+<sub><sup><img src="https://raw.githubusercontent.com/voltyea/Amethyst/main/misc/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
   </a>
   </p>
 
