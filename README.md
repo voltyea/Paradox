@@ -56,3 +56,8 @@ cd Amethyst
 sudo chmod +x install.sh
 ./install.sh
 ```
+
+
+### Notable Features
+
+⦿ You can change the wallpaper by double tapping on the screen.
