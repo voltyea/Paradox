@@ -61,3 +61,19 @@ sudo chmod +x install.sh
 ### Notable Features
 
 - You can change the wallpaper by double tapping on the screen.
+- I use stow to manage my dotfiles which are located in `$HOME/.local/amethyst/dotfiles/` directory. If you want to add your dotfiles to this directory and `stow` them, just use the `amethyst-cli` command. It will automatically add it to the amethyst dotfiles directory and symlink it in the right place.
+  - Usage:
+   - `amethyst-cli [options] <directory>`
+ 
+   - `[options]`:
+     
+    - `-h` for help
+    - `-add` to add a file or directory to the amethyst dotfiles directory and symlink it.
+    - `remove` to remove the symlink and move the original file in it's place.
+    - `cd` to change the directory to the amethyst dotfiles directory(this will open the dotfiles directory in a subshell, type `exit` to go back to where you where.)
+
+- If you want to update your mirrorlist then just use the `update` command. This will update your official arch mirror and your chaotic aur mirrors.
+
+- If you want to setup spicetify you can run the `spicetify.sh` script to do so after logging in to Spotify.
+
+- Some HP and Lenovo laptops have an issue where the wifi gets disconnected after a few minutes, to solve this you can run the `rtw89.sh` script and - hopefully it will solve the issue.
