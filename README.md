@@ -79,3 +79,15 @@ sudo chmod +x install.sh
 - If you want to setup spicetify you can run the `spicetify.sh` script to do so after logging in to Spotify.
 
 - Some HP and Lenovo laptops have an issue where the wifi gets disconnected after a few minutes, to solve this you can run the `rtw89.sh` script and - hopefully it will solve the issue.
+
+### Gallery
+
+<table align="center">
+  <tr>
+    <td colspan="4"><img src="assets/screenshot_1.png"></td>
+  </tr>
+  <tr>
+    <td colspan="1"><img src="assets/screenshot_2.png"></td>
+    <td colspan="1"><img src="assets/screenshots_3.png"></td>
+  </tr>
+</table>
