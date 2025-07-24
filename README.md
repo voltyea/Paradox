@@ -12,7 +12,11 @@
   </a>
   </p>
 
-<https://github.com/user-attachments/assets/f6a3002f-5206-4d80-ad00-862645482c47>
+<div align="center">
+
+https://github.com/user-attachments/assets/f6a3002f-5206-4d80-ad00-862645482c47
+
+</div>
 
 This is an installation script to install and configure hyprland on arch linux.
 This script should be used with a minimal arch linux install and with only hyprland installed since it changes some very low system stuff.
