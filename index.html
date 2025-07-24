@@ -1,72 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smooth Scroll Animations</title>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <title>Purple Vibes</title>
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-    }
+    :root {
+      --purple: #7e5bef;
+      --dark: #1f1f2e;
+      --light: #f5f5fa;
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 2rem;
-      text-align: center;
-    }
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  min-height: 100vh;
+}
 
-    section {
-      max-width: 800px;
-      margin: 100px auto;
-      padding: 2rem;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+header {
+  background: var(--purple);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-    h2 {
-      margin-top: 0;
-    }
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #d1c4f7;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--purple);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  background-color: var(--purple);
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(126, 91, 239, 0.3);
+}
+
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Welcome to My Animated Page</h1>
-    <p>Scroll down to see elements animate into view</p>
-  </header>
-
-  <section data-aos="fade-up">
-    <h2>Section One</h2>
-    <p>This section fades in as you scroll down.</p>
-  </section>
-
-  <section data-aos="fade-left">
-    <h2>Section Two</h2>
-    <p>This one slides in from the left.</p>
-  </section>
-
-  <section data-aos="zoom-in">
-    <h2>Section Three</h2>
-    <p>Zoom effect on scroll!</p>
-  </section>
-
-  <section data-aos="flip-up">
-    <h2>Section Four</h2>
-    <p>Animated flip up effect using AOS.</p>
-  </section>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,  // animation duration in ms
-      once: true       // whether animation should happen only once
-    });
-  </script>
-</body>
+    <h2>Purple Vibes</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>  <section class="hero">
+    <h1>Welcome to the Purple Zone</h1>
+    <p>Experience the calm energy of purple. Explore ideas, create, and innovate in a space designed to inspire.</p>
+    <button class="cta-btn" onclick="handleClick()">Get Started</button>
+  </section>  <script>
+    function handleClick() {
+      alert("Thanks for clicking! Let's get started.");
+    }
+  </script></body>
 </html>
