@@ -4,6 +4,8 @@
   </a>
 </p>
 
+---
+
 <p align="center">
   <sub><sup><img src="https://raw.githubusercontent.com/voltyea/Amethyst/main/misc/Sparkles.webp" alt="Sparkles" width="25" height="25"/></sup></sub>
 <a href="https://github.com/voltyea/Amethyst">
@@ -84,10 +86,10 @@ sudo chmod +x install.sh
 
 <table align="center">
   <tr>
-    <td colspan="4"><img src="assets/screenshot_1.png"></td>
+    <td colspan="4"><img src="resources/screenshot_1.png"></td>
   </tr>
   <tr>
-    <td colspan="1"><img src="assets/screenshot_2.png"></td>
-    <td colspan="1"><img src="assets/screenshots_3.png"></td>
+    <td colspan="1"><img src="resources/screenshot_2.png"></td>
+    <td colspan="1"><img src="resources/screenshots_3.png"></td>
   </tr>
 </table>
