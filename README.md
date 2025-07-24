@@ -90,6 +90,14 @@ sudo chmod +x install.sh
   </tr>
   <tr>
     <td colspan="1"><img src="resources/screenshot_2.png"></td>
-    <td colspan="1"><img src="resources/screenshots_3.png"></td>
+    <td colspan="1"><img src="resources/screenshot_3.png"></td>
   </tr>
 </table>
+
+---
+
+Dotfiles repo:-
+https://github.com/voltyea/dotfiles
+
+Wallpapers repo:-
+https://github.com/voltyea/my_wallpapers
