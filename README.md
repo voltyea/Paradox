@@ -39,7 +39,7 @@ sudo chmod +x install.sh
 ### 📦 Installation
 
 > [!IMPORTANT]
-> Run the installation script on a fresh minimal installation of arch linux.
+> Run the installation script on a fresh and minimal installation of arch linux.
 >Clone this repo in your home folder and run the installer script.
 
 >[!CAUTION]
@@ -57,6 +57,8 @@ sudo chmod +x install.sh
 ./install.sh
 ```
 
+>[!NOTE]
+>There is no support for nvidia drivers, so install it yourself.
 
 ### Notable Features
 
