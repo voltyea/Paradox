@@ -60,4 +60,4 @@ sudo chmod +x install.sh
 
 ### Notable Features
 
-⦿ You can change the wallpaper by double tapping on the screen.
+- You can change the wallpaper by double tapping on the screen.
