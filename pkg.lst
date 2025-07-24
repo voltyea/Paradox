@@ -36,7 +36,13 @@ git
 gnupg
 grimblast-git
 grub
+gst-libav
 gst-plugin-pipewire
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gstreamer
 gtk-layer-shell
 gtk3
 gtksourceview3
