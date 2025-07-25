@@ -4,60 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amethyst</title>
+
   <style>
+    /* Base Reset and Theme */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #28282B;
     }
 
-@font-face {
-  font-family: 'Wisteria';
-  src: url('wisteria_2/Wisteria.otf') format('opentype');
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      background: transparent;
+      background-color: #28282B;
       color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Custom Font */
+    @font-face {
+      font-family: 'Wisteria';
+      src: url('wisteria_2/Wisteria.otf') format('opentype');
     }
 
     header {
-      font-family: 'Wisteria';
-      font-size: 80px;
+      font-family: 'Wisteria', cursive, sans-serif;
       color: #9966cc;
       text-align: center;
       margin-top: 20px;
     }
 
-.video-container {
-  position: relative; /* <-- Add this */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 60px auto;
-  width: 90%;
-  max-width: 640px;
-  border: 2px solid #f38ba8;
-  border-radius: 14px;
-  overflow: hidden;
-}
+    header h1 {
+      font-size: 80px;
+    }
 
-video {
-  width: 100%;
-  display: block;
-  border-radius: 0; /* No rounding needed since container handles it */
-}
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 48px;
+      }
+    }
+
+    /* Video Section */
+    .video-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 60px auto;
+      width: 90%;
+      max-width: 640px;
+      border: 2px solid #f38ba8;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+    }
 
     .controls {
       position: absolute;
-      bottom: 0px;
-      left: 15px;
+      bottom: 10px;
+      left: 10px;
       display: flex;
-      gap: 10px;
-      background: transparent;
+      gap: 16px;
+      background-color: rgba(0, 0, 0, 0.4);
       padding: 8px 12px;
       border-radius: 8px;
     }
@@ -65,34 +80,51 @@ video {
     .controls button {
       background: none;
       border: none;
-      color: white;
-      font-size: 18px;
+      color: #fff;
+      font-size: 24px;
       cursor: pointer;
     }
 
+    .controls button:hover {
+      color: #f38ba8;
+    }
+
+    /* Content Sections */
     section {
       padding: 80px 20px;
       text-align: center;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #ccc;
+    @media (max-width: 600px) {
+      section {
+        padding: 40px 12px;
+      }
     }
 
+    /* Button */
     .btn {
+      display: inline-block;
       padding: 12px 24px;
       background: transparent;
       color: #fff;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
+      border: 1px solid #fff;
       border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
     }
 
     .btn:hover {
       background: #555;
+      color: #f38ba8;
+      border-color: #f38ba8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #ccc;
     }
   </style>
 </head>
@@ -109,8 +141,8 @@ video {
     </video>
 
     <div class="controls">
-      <button id="playPause">⏸</button>
-      <button id="fullscreen">⛶</button>
+      <button id="playPause" title="Play/Pause">⏸</button>
+      <button id="fullscreen" title="Toggle Fullscreen">⛶</button>
     </div>
   </div>
 
@@ -144,7 +176,6 @@ video {
     const playPauseBtn = document.getElementById("playPause");
     const fullscreenBtn = document.getElementById("fullscreen");
 
-    // Play/pause toggle
     playPauseBtn.addEventListener("click", () => {
       if (video.paused) {
         video.play();
@@ -155,7 +186,6 @@ video {
       }
     });
 
-    // Fullscreen toggle
     fullscreenBtn.addEventListener("click", () => {
       if (!document.fullscreenElement) {
         video.requestFullscreen();
