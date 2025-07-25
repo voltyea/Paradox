@@ -49,7 +49,7 @@ sudo chmod +x install.sh
 ### Notable Features
 
 - You can change the wallpaper by double clicking on the screen.
-- I use stow to manage my dotfiles which are located in `$HOME/.local/amethyst/dotfiles/` directory. If you want to add your dotfiles to this directory and `stow` them, just use the `amethyst-cli` command. It will automatically add it to the amethyst dotfiles directory and symlink it in the right place.
+- I use gnu stow to manage my dotfiles which are located in `$HOME/.local/amethyst/dotfiles/` directory. If you want to add your dotfiles to this directory and `stow` them, just use the `amethyst-cli` command. It will automatically add it to the amethyst dotfiles directory and symlink it in the right place.
   - Usage:
    - `amethyst-cli [options] <directory>`
  
