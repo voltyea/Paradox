@@ -1,114 +1,165 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Purple Vibes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amethyst</title>
   <style>
-    :root {
-      --purple: #7e5bef;
-      --dark: #1f1f2e;
-      --light: #f5f5fa;
-    }* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      background-color: #28282B;
+    }
 
-body {
-  background-color: var(--light);
-  color: var(--dark);
-  min-height: 100vh;
-}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background: transparent;
+      color: #fff;
+    }
 
-header {
-  background: var(--purple);
-  color: white;
-  padding: 1.5rem 2rem;
+    header {
+      font-family: "Wisteria";
+      src: url('wisteria_2/Wisteria.ttf') format('truetype');
+      font-size: 80px;
+      color: #9966cc;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+.video-container {
+  position: relative; /* <-- Add this */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-nav a {
-  margin-left: 1.5rem;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #d1c4f7;
-}
-
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 4rem 2rem;
+  align-items: center;
+  margin: 60px auto;
+  width: 640px;
+  border: 2px solid #f38ba8;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
-.hero img {
+video {
   width: 100%;
-  max-width: 600px;
-  height: auto;
-  margin-bottom: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: block;
+  border-radius: 0; /* No rounding needed since container handles it */
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: var(--purple);
-}
+    .controls {
+      position: absolute;
+      bottom: 0px;
+      left: 15px;
+      display: flex;
+      gap: 10px;
+      background: transparent;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
 
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  color: #555;
-  margin-bottom: 2rem;
-}
+    .controls button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
 
-.cta-btn {
-  background-color: var(--purple);
-  color: white;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
 
-.cta-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(126, 91, 239, 0.3);
-}
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #ccc;
+    }
 
+    .btn {
+      padding: 12px 24px;
+      background: transparent;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background: #555;
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h2>Purple Vibes</h2>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>  <section class="hero">
-    <img src="./amethyst.svg" alt="Purple themed banner" />
-    <h1>Welcome to the Purple Zone</h1>
-    <p>Experience the calm energy of purple. Explore ideas, create, and innovate in a space designed to inspire.</p>
-    <button class="cta-btn" onclick="handleClick()">Get Started</button>
-  </section>  <script>
-    function handleClick() {
-      alert("Thanks for clicking! Let's get started.");
-    }
-  </script></body>
+    <h1>Amethyst</h1>
+  </header>
+
+  <div class="video-container">
+    <video id="myVideo" autoplay muted loop playsinline>
+      <source src="output_1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="controls">
+      <button id="playPause">⏸</button>
+      <button id="fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <section class="features" id="features">
+    <h2>Features</h2>
+    <p>Highlight your product or service features in this section with engaging content and visuals.</p>
+  </section>
+
+  <section class="gallery">
+    <h2>Gallery</h2>
+    <p>Use this section to showcase images or screenshots.</p>
+  </section>
+
+  <section class="testimonial">
+    <h2>Testimonials</h2>
+    <p>Let your satisfied customers speak for you with compelling quotes.</p>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Ready to talk? Get in touch with us.</p>
+    <a href="mailto:hello@example.com" class="btn">Send Email</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Your Company. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const video = document.getElementById("myVideo");
+    const playPauseBtn = document.getElementById("playPause");
+    const fullscreenBtn = document.getElementById("fullscreen");
+
+    // Play/pause toggle
+    playPauseBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.textContent = "⏸";
+      } else {
+        video.pause();
+        playPauseBtn.textContent = "▶";
+      }
+    });
+
+    // Fullscreen toggle
+    fullscreenBtn.addEventListener("click", () => {
+      if (!document.fullscreenElement) {
+        video.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  </script>
+
+</body>
 </html>
+
