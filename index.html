@@ -155,7 +155,7 @@
 
     <div class="controls">
       <button id="playPause" title="Play/Pause" aria-label="Play or Pause Video">
-        <img id="playPauseIcon" src="icons/pause.svg" alt="Pause" />
+        <img id="playPauseIcon" src="/pause.svg" alt="Pause" />
       </button>
 
       <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
@@ -195,9 +195,9 @@
     const playPauseIcon = document.getElementById("playPauseIcon");
     const fullscreenBtn = document.getElementById("fullscreen");
 
-    // 🔁 Local icon paths
-    const pauseIconSrc = "pause.svg";
-    const playIconSrc = "play.svg";
+    // ✅ Corrected icon paths (root folder)
+    const pauseIconSrc = "/pause.svg";
+    const playIconSrc = "/play.svg";
 
     playPauseBtn.addEventListener("click", () => {
       if (video.paused) {
