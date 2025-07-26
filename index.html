@@ -20,15 +20,14 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       background: 
-    radial-gradient(circle at 20% 30%, #64246B 0%, transparent 60%),
-    radial-gradient(circle at 80% 40%, #000000 0%, transparent 60%),
-    radial-gradient(circle at 50% 80%, #64246B 0%, transparent 60%),
-    radial-gradient(circle at 70% 20%, #000000 0%, transparent 60%),
-    linear-gradient(135deg, #020202, #6E4993);
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  margin: 0;
+        radial-gradient(circle at 20% 30%, #64246B 0%, transparent 60%),
+        radial-gradient(circle at 80% 40%, #000000 0%, transparent 60%),
+        radial-gradient(circle at 50% 80%, #64246B 0%, transparent 60%),
+        radial-gradient(circle at 70% 20%, #000000 0%, transparent 60%),
+        linear-gradient(135deg, #020202, #6E4993);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
       color: #fff;
       line-height: 1.6;
     }
@@ -40,14 +39,14 @@
     }
 
     header {
-  font-family: 'Wisteria', cursive, sans-serif;
-  font-size: 12px;
-  color: #9966cc;
-  text-align: left;
-  padding: 8px;
-  background-color: transparent; /* semi-transparent */
-  backdrop-filter: blur(500px);
-  -webkit-backdrop-filter: blur(10px); /* for Safari support */
+      font-family: 'Wisteria', cursive, sans-serif;
+      font-size: 12px;
+      color: #9966cc;
+      text-align: left;
+      padding: 8px;
+      background-color: transparent;
+      backdrop-filter: blur(500px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     /* Video Section */
@@ -129,6 +128,18 @@
       padding: 40px;
       color: #ccc;
     }
+
+    /* Fade-out on scroll */
+    .fade-out {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-out.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -137,44 +148,45 @@
     <h1>Amethyst</h1>
   </header>
 
-  <div class="video-container">
+  <div class="video-container fade-out">
     <video id="myVideo" autoplay muted loop playsinline>
       <source src="output_1.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <div class="controls">
-      <button id="playPause" title="Play/Pause">⏸</button>
-      <button id="fullscreen" title="Toggle Fullscreen">⛶</button>
+      <button id="playPause" title="Play/Pause" aria-label="Play or Pause Video">⏸</button>
+      <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">⛶</button>
     </div>
   </div>
 
-  <section class="features" id="features">
+  <section class="features fade-out" id="features">
     <h2>Features</h2>
     <p>Highlight your product or service features in this section with engaging content and visuals.</p>
   </section>
 
-  <section class="gallery">
+  <section class="gallery fade-out">
     <h2>Gallery</h2>
     <p>Use this section to showcase images or screenshots.</p>
   </section>
 
-  <section class="testimonial">
+  <section class="testimonial fade-out">
     <h2>Testimonials</h2>
     <p>Let your satisfied customers speak for you with compelling quotes.</p>
   </section>
 
-  <section class="contact">
+  <section class="contact fade-out">
     <h2>Contact Us</h2>
     <p>Ready to talk? Get in touch with us.</p>
     <a href="mailto:hello@example.com" class="btn">Send Email</a>
   </section>
 
-  <footer>
+  <footer class="fade-out">
     <p>&copy; 2025 Your Company. All rights reserved.</p>
   </footer>
 
   <script>
+    // Video control logic
     const video = document.getElementById("myVideo");
     const playPauseBtn = document.getElementById("playPause");
     const fullscreenBtn = document.getElementById("fullscreen");
@@ -191,13 +203,27 @@
 
     fullscreenBtn.addEventListener("click", () => {
       if (!document.fullscreenElement) {
-        video.requestFullscreen();
+        video.parentElement.requestFullscreen();
       } else {
         document.exitFullscreen();
       }
     });
+
+    // Fade-out scroll effect
+    const fadeElements = document.querySelectorAll('.fade-out');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
   </script>
 
 </body>
 </html>
-
