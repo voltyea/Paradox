@@ -5,145 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amethyst</title>
 
-  <!-- Preload icons from same folder -->
+  <!-- Preload icons -->
   <link rel="preload" href="pause.svg" as="image">
   <link rel="preload" href="play.svg" as="image">
   <link rel="preload" href="fullscreen.svg" as="image">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: 
-        radial-gradient(circle at 20% 30%, #64246B 0%, transparent 60%),
-        radial-gradient(circle at 80% 40%, #000000 0%, transparent 60%),
-        radial-gradient(circle at 50% 80%, #64246B 0%, transparent 60%),
-        radial-gradient(circle at 70% 20%, #000000 0%, transparent 60%),
-        linear-gradient(135deg, #020202, #6E4993);
-      background-size: cover;
-      background-attachment: fixed;
-      min-height: 100vh;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    @font-face {
-      font-family: 'Wisteria';
-      src: url('wisteria_2/Wisteria.otf') format('opentype');
-    }
-
-    header {
-      font-family: 'Wisteria', cursive, sans-serif;
-      font-size: 12px;
-      color: #9966cc;
-      text-align: left;
-      padding: 8px;
-      background-color: transparent;
-      backdrop-filter: blur(500px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .video-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 60px auto;
-      width: 90%;
-      max-width: 640px;
-      border: 2px solid #9966cc;
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    video {
-      width: 100%;
-      display: block;
-    }
-
-    .controls {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      display: flex;
-      gap: 16px;
-      background-color: transparent;
-      padding: 5px 9px;
-    }
-
-    .controls button {
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .controls img {
-      width: 24px;
-      height: 24px;
-      filter: brightness(0) invert(1);
-      transition: filter 0.2s;
-    }
-
-    .controls button:hover img {
-      filter: brightness(0) invert(0.85) sepia(1) hue-rotate(270deg) saturate(3);
-    }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    @media (max-width: 600px) {
-      section {
-        padding: 40px 12px;
-      }
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background: transparent;
-      color: #fff;
-      border: 1px solid #fff;
-      border-radius: 5px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .btn:hover {
-      background: #555;
-      color: #f38ba8;
-      border-color: #f38ba8;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #ccc;
-    }
-
-    .fade-out {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .fade-out.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -151,102 +19,51 @@
     <h1>Amethyst</h1>
   </header>
 
-  <div class="video-container fade-out">
-    <video id="myVideo" autoplay muted loop playsinline>
-      <source src="output_1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <main>
+    <div class="video-container fade-out">
+      <video id="myVideo" autoplay muted loop playsinline>
+        <source src="output_1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-    <div class="controls">
-      <button id="playPause" title="Play/Pause" aria-label="Play or Pause Video">
-        <img id="playPauseIcon" src="pause.svg" alt="Pause" />
-      </button>
+      <div class="controls">
+        <button id="playPause" aria-label="Play or Pause Video">
+          <img id="playPauseIcon" src="pause.svg" alt="" aria-hidden="true" />
+        </button>
 
-      <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
-        <img id="fullscreenIcon" src="fullscreen.svg" alt="Fullscreen" />
-      </button>
+        <button id="fullscreen" aria-label="Toggle Fullscreen">
+          <img id="fullscreenIcon" src="fullscreen.svg" alt="" aria-hidden="true" />
+        </button>
+      </div>
     </div>
-  </div>
 
-  <section class="features fade-out" id="features">
-    <h2>Features</h2>
-    <p>Highlight your product or service features in this section with engaging content and visuals.</p>
-  </section>
+    <section class="features fade-out" id="features">
+      <h2>Features</h2>
+      <p>Highlight your product or service features in this section with engaging content and visuals.</p>
+    </section>
 
-  <section class="gallery fade-out">
-    <h2>Gallery</h2>
-    <p>Use this section to showcase images or screenshots.</p>
-  </section>
+    <section class="gallery fade-out">
+      <h2>Gallery</h2>
+      <p>Use this section to showcase images or screenshots.</p>
+    </section>
 
-  <section class="testimonial fade-out">
-    <h2>Testimonials</h2>
-    <p>Let your satisfied customers speak for you with compelling quotes.</p>
-  </section>
+    <section class="testimonial fade-out">
+      <h2>Testimonials</h2>
+      <p>Let your satisfied customers speak for you with compelling quotes.</p>
+    </section>
 
-  <section class="contact fade-out">
-    <h2>Contact Us</h2>
-    <p>Ready to talk? Get in touch with us.</p>
-    <a href="mailto:hello@example.com" class="btn">Send Email</a>
-  </section>
+    <section class="contact fade-out">
+      <h2>Contact Us</h2>
+      <p>Ready to talk? Get in touch with us.</p>
+      <a href="mailto:hello@example.com" class="btn">Send Email</a>
+    </section>
+  </main>
 
   <footer class="fade-out">
     <p>&copy; 2025 Your Company. All rights reserved.</p>
   </footer>
 
-  <script>
-    const video = document.getElementById("myVideo");
-    const playPauseBtn = document.getElementById("playPause");
-    const playPauseIcon = document.getElementById("playPauseIcon");
-    const fullscreenBtn = document.getElementById("fullscreen");
-
-    const pauseIconSrc = "pause.svg";
-    const playIconSrc = "play.svg";
-
-    // Preload icons
-    new Image().src = pauseIconSrc;
-    new Image().src = playIconSrc;
-
-    playPauseBtn.addEventListener("click", () => {
-      if (video.paused) {
-        video.play();
-        playPauseIcon.src = pauseIconSrc;
-        playPauseIcon.alt = "Pause";
-      } else {
-        video.pause();
-        playPauseIcon.src = playIconSrc;
-        playPauseIcon.alt = "Play";
-      }
-
-      // ✅ Remove focus after click to reset icon color
-      playPauseBtn.blur();
-    });
-
-    fullscreenBtn.addEventListener("click", () => {
-      if (!document.fullscreenElement) {
-        video.requestFullscreen(); // ✅ Only fullscreen the video
-      } else {
-        document.exitFullscreen();
-      }
-
-      // ✅ Remove focus after click to reset icon color
-      fullscreenBtn.blur();
-    });
-
-    // Fade-in on scroll
-    const fadeElements = document.querySelectorAll('.fade-out');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    fadeElements.forEach(el => observer.observe(el));
-  </script>
-
+  <!-- External JS -->
+  <script src="script.js"></script>
 </body>
 </html>
