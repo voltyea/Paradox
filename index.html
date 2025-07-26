@@ -32,7 +32,6 @@
       line-height: 1.6;
     }
 
-    /* Custom Font */
     @font-face {
       font-family: 'Wisteria';
       src: url('wisteria_2/Wisteria.otf') format('opentype');
@@ -49,7 +48,6 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Video Section */
     .video-container {
       position: relative;
       display: flex;
@@ -83,15 +81,19 @@
       background: none;
       border: none;
       color: #fff;
-      font-size: 24px;
       cursor: pointer;
     }
 
-    .controls button:hover {
+    .controls svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .controls button:hover svg {
       color: #f38ba8;
     }
 
-    /* Content Sections */
     section {
       padding: 80px 20px;
       text-align: center;
@@ -103,7 +105,6 @@
       }
     }
 
-    /* Button */
     .btn {
       display: inline-block;
       padding: 12px 24px;
@@ -122,14 +123,12 @@
       border-color: #f38ba8;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 40px;
       color: #ccc;
     }
 
-    /* Fade-out on scroll */
     .fade-out {
       opacity: 0;
       transform: translateY(20px);
@@ -155,8 +154,19 @@
     </video>
 
     <div class="controls">
-      <button id="playPause" title="Play/Pause" aria-label="Play or Pause Video">⏸</button>
-      <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">⛶</button>
+      <button id="playPause" title="Play/Pause" aria-label="Play or Pause Video">
+        <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <!-- 🔁 Pause icon path (replace here if you want to customize) -->
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+
+      <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+        <svg id="fullscreenIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <!-- 🔁 Fullscreen icon path (replace here if you want to customize) -->
+          <path d="M7 14H5v5h5v-2H7v-3zm12 5h-3v2h5v-5h-2v3zM7 5h3V3H5v5h2V5zm12 0v3h2V3h-5v2h3z"/>
+        </svg>
+      </button>
     </div>
   </div>
 
@@ -186,18 +196,22 @@
   </footer>
 
   <script>
-    // Video control logic
     const video = document.getElementById("myVideo");
     const playPauseBtn = document.getElementById("playPause");
+    const playPauseIcon = document.getElementById("playPauseIcon");
     const fullscreenBtn = document.getElementById("fullscreen");
+
+    // 🔁 Replace these with your custom SVG paths if desired
+    const pauseSVG = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+    const playSVG = `<path d="M8 5v14l11-7z"/>`;
 
     playPauseBtn.addEventListener("click", () => {
       if (video.paused) {
         video.play();
-        playPauseBtn.textContent = "⏸";
+        playPauseIcon.innerHTML = pauseSVG;
       } else {
         video.pause();
-        playPauseBtn.textContent = "▶";
+        playPauseIcon.innerHTML = playSVG;
       }
     });
 
