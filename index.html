@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amethyst</title>
-  <link rel="preload" href="play.svg" as="image">
+  <link rel="preload" href="/play.svg" as="image">
 
   <style>
     * {
@@ -160,7 +160,7 @@
       </button>
 
       <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
-        <img id="fullscreenIcon" src="fullscreen.svg" alt="Fullscreen" />
+        <img id="fullscreenIcon" src="/fullscreen.svg" alt="Fullscreen" />
       </button>
     </div>
   </div>
@@ -196,9 +196,12 @@
     const playPauseIcon = document.getElementById("playPauseIcon");
     const fullscreenBtn = document.getElementById("fullscreen");
 
-    // ✅ Corrected icon paths (root folder)
     const pauseIconSrc = "/pause.svg";
     const playIconSrc = "/play.svg";
+
+    // ✅ Preload play icon in JS
+    const preloadPlay = new Image();
+    preloadPlay.src = playIconSrc;
 
     playPauseBtn.addEventListener("click", () => {
       if (video.paused) {
