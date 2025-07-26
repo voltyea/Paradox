@@ -6,7 +6,6 @@
   <title>Amethyst</title>
 
   <style>
-    /* Base Reset and Theme */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -84,14 +83,15 @@
       cursor: pointer;
     }
 
-    .controls svg {
+    .controls img {
       width: 24px;
       height: 24px;
-      fill: currentColor;
+      filter: brightness(0) invert(1); /* make white */
+      transition: filter 0.2s;
     }
 
-    .controls button:hover svg {
-      color: #f38ba8;
+    .controls button:hover img {
+      filter: brightness(0) invert(0.7) sepia(1) hue-rotate(280deg) saturate(2); /* pink hover */
     }
 
     section {
@@ -155,17 +155,11 @@
 
     <div class="controls">
       <button id="playPause" title="Play/Pause" aria-label="Play or Pause Video">
-        <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <!-- 🔁 Pause icon path (replace here if you want to customize) -->
-          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-        </svg>
+        <img id="playPauseIcon" src="icons/pause.svg" alt="Pause" />
       </button>
 
       <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
-        <svg id="fullscreenIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <!-- 🔁 Fullscreen icon path (replace here if you want to customize) -->
-          <path d="M7 14H5v5h5v-2H7v-3zm12 5h-3v2h5v-5h-2v3zM7 5h3V3H5v5h2V5zm12 0v3h2V3h-5v2h3z"/>
-        </svg>
+        <img id="fullscreenIcon" src="fullscreen.svg" alt="Fullscreen" />
       </button>
     </div>
   </div>
@@ -201,17 +195,19 @@
     const playPauseIcon = document.getElementById("playPauseIcon");
     const fullscreenBtn = document.getElementById("fullscreen");
 
-    // 🔁 Replace these with your custom SVG paths if desired
-    const pauseSVG = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
-    const playSVG = `<path d="M8 5v14l11-7z"/>`;
+    // 🔁 Local icon paths
+    const pauseIconSrc = "pause.svg";
+    const playIconSrc = "play.svg";
 
     playPauseBtn.addEventListener("click", () => {
       if (video.paused) {
         video.play();
-        playPauseIcon.innerHTML = pauseSVG;
+        playPauseIcon.src = pauseIconSrc;
+        playPauseIcon.alt = "Pause";
       } else {
         video.pause();
-        playPauseIcon.innerHTML = playSVG;
+        playPauseIcon.src = playIconSrc;
+        playPauseIcon.alt = "Play";
       }
     });
 
@@ -223,7 +219,7 @@
       }
     });
 
-    // Fade-out scroll effect
+    // Fade-in on scroll
     const fadeElements = document.querySelectorAll('.fade-out');
 
     const observer = new IntersectionObserver((entries) => {
