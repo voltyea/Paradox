@@ -34,3 +34,19 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-out').forEach(el => observer.observe(el));
+
+function copyCommand() {
+  const command = document.getElementById("bashCommand").textContent;
+  const icon = document.getElementById("copyIcon");
+
+  navigator.clipboard.writeText(command).then(() => {
+    icon.src = "check.svg"; // Show checkmark
+    setTimeout(() => {
+      icon.src = "copy.svg"; // Revert after 1.5s
+    }, 1500);
+  }).catch(err => {
+    console.error("Copy failed:", err);
+  });
+}
+
+

@@ -21,8 +21,8 @@
   </div>
   <nav>
     <ul class="nav-menu">
-      <li><a href="#install">Install</a></li>
-      <li><a href="#docs">Docs</a></li>
+      <li><a href="installation.html">Installation</a></li>
+      <li><a href="docs.html">Docs</a></li>
     </ul>
   </nav>
 </header>
@@ -46,30 +46,19 @@
     </div>
 
     <section class="features fade-out" id="features">
-      <h2>Features</h2>
-      <p>Highlight your product or service features in this section with engaging content and visuals.</p>
-    </section>
+  <h2>Get Started! 🚀</h2>
 
-    <section class="gallery fade-out">
-      <h2>Gallery</h2>
-      <p>Use this section to showcase images or screenshots.</p>
-    </section>
+<div class="code-wrapper">
+  <button class="copy-icon" onclick="copyCommand()" aria-label="Copy code">
+    <img id="copyIcon" src="copy.svg" alt="Copy" />
+  </button>
+  <pre><code id="bashCommand">git clone https://github.com/voltyea/Amethyst.git
+cd Amethyst
+sudo chmod +x install.sh
+./install.sh</code></pre>
+</div>
 
-    <section class="testimonial fade-out">
-      <h2>Testimonials</h2>
-      <p>Let your satisfied customers speak for you with compelling quotes.</p>
-    </section>
-
-    <section class="contact fade-out">
-      <h2>Contact Us</h2>
-      <p>Ready to talk? Get in touch with us.</p>
-      <a href="mailto:hello@example.com" class="btn">Send Email</a>
-    </section>
-  </main>
-
-  <footer class="fade-out">
-    <p>&copy; 2025 Your Company. All rights reserved.</p>
-  </footer>
+</section>
 
   <!-- External JS -->
   <script src="script.js"></script>

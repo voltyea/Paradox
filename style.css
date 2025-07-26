@@ -117,7 +117,7 @@ video {
 
 section {
   padding: 80px 20px;
-  text-align: center;
+  text-align: left;
 }
 
 @media (max-width: 600px) {
@@ -125,29 +125,47 @@ section {
     padding: 40px 12px;
   }
 }
+.code-wrapper {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #9966cc;
+  border-radius: 10px;
+  padding: 1em;
+  margin-top: 2rem;
+  overflow-x: auto;
+}
 
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  text-decoration: none;
+.code-wrapper pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Poppins', monospace;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.copy-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  opacity: 0.6;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.2s ease;
 }
 
-.btn:hover {
-  background: #555;
-  color: #f38ba8;
-  border-color: #f38ba8;
+.copy-icon img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #ccc;
+.copy-icon:active img {
+  transform: scale(0.9);
 }
 
 .fade-out {
