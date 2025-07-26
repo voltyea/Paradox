@@ -19,6 +19,8 @@
 
 ### Move focus window
 
+| Keys                                                 | Action                          |
+| :----------------------------------------------------| :-------------------------------|
 | <kbd>SUPER</kbd> + <kbd>L</kbd>                      | move focus to right             |
 | <kbd>SUPER</kbd> + <kbd>H</kbd>                      | move focus to left              |
 | <kbd>SUPER</kbd> + <kbd>J</kbd>                      | move focus to down              |
