@@ -87,3 +87,11 @@ Wallpapers repo:-
 https://github.com/voltyea/my_wallpapers
 
 [Here](KEYBINDS.md) are the keybinds.
+
+---
+
+Projects that inspired me:
+
+https://github.com/HyDE-Project/HyDE/tree/master
+https://github.com/JaKooLit/Hyprland-Dots
+https://github.com/mylinuxforwork/dotfiles
