@@ -1,19 +1,36 @@
-// Reveal elements on scroll
-const reveals = document.querySelectorAll('.reveal');
+const video = document.getElementById("myVideo");
+const playPauseBtn = document.getElementById("playPause");
+const playPauseIcon = document.getElementById("playPauseIcon");
+const fullscreenBtn = document.getElementById("fullscreen");
 
-const options = {
-  threshold: 0.1
-};
+const pauseIcon = "pause.svg";
+const playIcon = "play.svg";
 
-const observer = new IntersectionObserver((entries, observer) => {
+// Toggle play/pause
+playPauseBtn.addEventListener("click", () => {
+  const isPaused = video.paused;
+  video[isPaused ? 'play' : 'pause']();
+  playPauseIcon.src = isPaused ? pauseIcon : playIcon;
+  playPauseBtn.blur();
+});
+
+// Toggle fullscreen
+fullscreenBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    video.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+  fullscreenBtn.blur();
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target); // optional: stop observing after reveal
+      entry.target.classList.add('visible');
     }
   });
-}, options);
+}, { threshold: 0.1 });
 
-reveals.forEach(reveal => {
-  observer.observe(reveal);
-});
+document.querySelectorAll('.fade-out').forEach(el => observer.observe(el));
