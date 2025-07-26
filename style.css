@@ -29,13 +29,41 @@ body {
   src: url('wisteria_2/Wisteria.otf') format('opentype');
 }
 
-header {
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 5px 10px;
+  backdrop-filter: blur(500px);
+  background-color: rgba(0, 0, 0, 0.1); /* Optional for contrast */
+}
+
+.logo h1 {
   font-family: 'Wisteria', cursive, sans-serif;
-  font-size: 12px;
+  font-size: 2rem;
   color: #9966cc;
-  text-align: left;
-  padding: 8px;
-  backdrop-filter: blur(10px);
+  margin: 0;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  font-family: 'Segoe UI', sans-serif;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-menu li a:hover {
+  color: #f38ba8;
 }
 
 .video-container {
@@ -81,7 +109,7 @@ video {
 }
 
 .controls button:hover img {
-  filter: brightness(0) invert(0.85) sepia(1) hue-rotate(270deg) saturate(3);
+  filter: brightness(0) invert(0.7) sepia(1) hue-rotate(280deg) saturate(2);
 }
 
 section {
