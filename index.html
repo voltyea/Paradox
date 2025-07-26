@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amethyst</title>
-  <link rel="preload" href="/play.svg" as="image">
+
+  <!-- Preload icons from same folder -->
+  <link rel="preload" href="pause.svg" as="image">
+  <link rel="preload" href="play.svg" as="image">
+  <link rel="preload" href="fullscreen.svg" as="image">
 
   <style>
     * {
@@ -87,12 +91,12 @@
     .controls img {
       width: 24px;
       height: 24px;
-      filter: brightness(0) invert(1); /* make white */
+      filter: brightness(0) invert(1);
       transition: filter 0.2s;
     }
 
     .controls button:hover img {
-      filter: brightness(0) invert(0.7) sepia(1) hue-rotate(280deg) saturate(2); /* pink hover */
+      filter: brightness(0) invert(0.7) sepia(1) hue-rotate(280deg) saturate(2);
     }
 
     section {
@@ -156,11 +160,11 @@
 
     <div class="controls">
       <button id="playPause" title="Play/Pause" aria-label="Play or Pause Video">
-        <img id="playPauseIcon" src="/pause.svg" alt="Pause" />
+        <img id="playPauseIcon" src="pause.svg" alt="Pause" />
       </button>
 
       <button id="fullscreen" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
-        <img id="fullscreenIcon" src="/fullscreen.svg" alt="Fullscreen" />
+        <img id="fullscreenIcon" src="fullscreen.svg" alt="Fullscreen" />
       </button>
     </div>
   </div>
@@ -196,12 +200,13 @@
     const playPauseIcon = document.getElementById("playPauseIcon");
     const fullscreenBtn = document.getElementById("fullscreen");
 
-    const pauseIconSrc = "/pause.svg";
-    const playIconSrc = "/play.svg";
+    // ✅ Relative paths (same folder as index.html)
+    const pauseIconSrc = "pause.svg";
+    const playIconSrc = "play.svg";
 
-    // ✅ Preload play icon in JS
-    const preloadPlay = new Image();
-    preloadPlay.src = playIconSrc;
+    // ✅ Preload icons to prevent flicker
+    new Image().src = pauseIconSrc;
+    new Image().src = playIconSrc;
 
     playPauseBtn.addEventListener("click", () => {
       if (video.paused) {
