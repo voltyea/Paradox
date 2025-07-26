@@ -9,8 +9,10 @@ html {
   scroll-behavior: smooth;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: 
     radial-gradient(circle at 20% 30%, #64246B 0%, transparent 60%),
     radial-gradient(circle at 80% 40%, #000000 0%, transparent 60%),
