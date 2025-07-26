@@ -87,7 +87,7 @@
       cursor: pointer;
     }
 
-    .controls button img {
+    .controls img {
       width: 24px;
       height: 24px;
       filter: brightness(0) invert(1);
@@ -95,7 +95,7 @@
     }
 
     .controls button:hover img {
-      filter: brightness(0) invert(0.7) sepia(1) hue-rotate(280deg) saturate(2);
+      filter: brightness(0) invert(0.85) sepia(1) hue-rotate(270deg) saturate(3);
     }
 
     section {
@@ -202,7 +202,7 @@
     const pauseIconSrc = "pause.svg";
     const playIconSrc = "play.svg";
 
-    // Preload play icon to avoid flicker
+    // Preload icons
     new Image().src = pauseIconSrc;
     new Image().src = playIconSrc;
 
@@ -216,14 +216,20 @@
         playPauseIcon.src = playIconSrc;
         playPauseIcon.alt = "Play";
       }
+
+      // ✅ Remove focus after click to reset icon color
+      playPauseBtn.blur();
     });
 
     fullscreenBtn.addEventListener("click", () => {
       if (!document.fullscreenElement) {
-        video.requestFullscreen(); // changed from video.parentElement
+        video.requestFullscreen(); // ✅ Only fullscreen the video
       } else {
         document.exitFullscreen();
       }
+
+      // ✅ Remove focus after click to reset icon color
+      fullscreenBtn.blur();
     });
 
     // Fade-in on scroll
