@@ -87,7 +87,7 @@
       cursor: pointer;
     }
 
-    .controls img {
+    .controls button img {
       width: 24px;
       height: 24px;
       filter: brightness(0) invert(1);
@@ -199,11 +199,10 @@
     const playPauseIcon = document.getElementById("playPauseIcon");
     const fullscreenBtn = document.getElementById("fullscreen");
 
-    // ✅ Relative paths (same folder as index.html)
     const pauseIconSrc = "pause.svg";
     const playIconSrc = "play.svg";
 
-    // ✅ Preload icons to prevent flicker
+    // Preload play icon to avoid flicker
     new Image().src = pauseIconSrc;
     new Image().src = playIconSrc;
 
@@ -221,7 +220,7 @@
 
     fullscreenBtn.addEventListener("click", () => {
       if (!document.fullscreenElement) {
-        video.parentElement.requestFullscreen();
+        video.requestFullscreen(); // changed from video.parentElement
       } else {
         document.exitFullscreen();
       }
