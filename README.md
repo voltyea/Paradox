@@ -85,3 +85,5 @@ https://github.com/voltyea/dotfiles
 
 Wallpapers repo:-
 https://github.com/voltyea/my_wallpapers
+
+[Here](KEYBINDS.md) are the keybinds.
