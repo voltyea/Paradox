@@ -2,7 +2,7 @@
 | :--------------------------------------------------- | :------------------------------ |
 | <kbd>SUPER</kbd> + <kbd>Enter</kbd>                  | open Terminal                   |
 | <kbd>SUPER</kbd> + <kbd>Q</kbd>                      | close focused window            |
-| <kbd>SUPER</kbd> + <kbd>M</kbd>                      | logg out                        |
+| <kbd>SUPER</kbd> + <kbd>M</kbd>                      | Logout                          |
 | <kbd>SUPER</kbd> + <kbd>E</kbd>                      | open file manager               |
 | <kbd>SUPER</kbd> + <kbd>Space</kbd>                  | toggle floating                 |
 | <kbd>SUPER</kbd> + <kbd>W</kbd>                      | toggle float                    |
