@@ -1,55 +1,131 @@
-body {
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f7f9fc;
-  color: #333;
+  padding: 0;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
-.hero {
-  height: 100vh;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  color: white;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: 
+    radial-gradient(circle at 20% 30%, #64246B 0%, transparent 60%),
+    radial-gradient(circle at 80% 40%, #000000 0%, transparent 60%),
+    radial-gradient(circle at 50% 80%, #64246B 0%, transparent 60%),
+    radial-gradient(circle at 70% 20%, #000000 0%, transparent 60%),
+    linear-gradient(135deg, #020202, #6E4993);
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #fff;
+  line-height: 1.6;
+}
+
+@font-face {
+  font-family: 'Wisteria';
+  src: url('wisteria_2/Wisteria.otf') format('opentype');
+}
+
+header {
+  font-family: 'Wisteria', cursive, sans-serif;
+  font-size: 12px;
+  color: #9966cc;
+  text-align: left;
+  padding: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.video-container {
+  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 60px auto;
+  width: 90%;
+  max-width: 640px;
+  border: 2px solid #9966cc;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  display: block;
+}
+
+.controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  gap: 16px;
+  background-color: transparent;
+  padding: 5px 9px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.controls img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.2s;
+}
+
+.controls button:hover img {
+  filter: brightness(0) invert(0.85) sepia(1) hue-rotate(270deg) saturate(3);
+}
+
+section {
+  padding: 80px 20px;
   text-align: center;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin: 0;
+@media (max-width: 600px) {
+  section {
+    padding: 40px 12px;
+  }
 }
 
-.hero p {
-  font-size: 1.25rem;
-  margin-top: 1rem;
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
 }
 
-.content {
-  padding: 100px 20px;
-  max-width: 800px;
-  margin: 0 auto;
+.btn:hover {
+  background: #555;
+  color: #f38ba8;
+  border-color: #f38ba8;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #ccc;
+}
+
+.fade-out {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.content h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 40px 0;
-}
-
-/* Reveal class triggered by JavaScript */
-.reveal.active {
+.fade-out.visible {
   opacity: 1;
   transform: translateY(0);
-}
+  }
