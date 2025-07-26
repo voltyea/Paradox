@@ -92,6 +92,8 @@ https://github.com/voltyea/my_wallpapers
 
 Projects that inspired me:
 
-https://github.com/HyDE-Project/HyDE/tree/master
-https://github.com/JaKooLit/Hyprland-Dots
-https://github.com/mylinuxforwork/dotfiles
+[The HyDE Project](https://github.com/HyDE-Project/HyDE/tree/master)
+
+[Jakoolit](https://github.com/JaKooLit/Hyprland-Dots)
+
+[ml4w](https://github.com/mylinuxforwork/dotfiles)
